@@ -9,7 +9,7 @@
 public struct Stream: Codable {
     public let url: String
     public let format, formatNote: String
-    public let streamExtension: Extension
+    public let streamExtension: String
     public let videoCodec: String
     public let audioCodec: AudioCodec
     public let height, width, fps: Int?
@@ -40,10 +40,4 @@ public enum AudioCodec: String, Codable {
     case none = "none"
     case opus = "opus"
     case vorbis = "vorbis"
-}
-
-public enum Extension: String, Codable {
-    case m4A = "m4a"
-    case mp4 = "mp4"
-    case webm = "webm"
 }

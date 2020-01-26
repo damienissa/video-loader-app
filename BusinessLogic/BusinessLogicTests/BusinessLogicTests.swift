@@ -19,21 +19,19 @@ class BusinessLogicTests: XCTestCase {
         
         let urlForTest = URL(string: "https://www.youtube.com/watch?v=PUSJhSVcaJ8")!
         let exp = self.expectation(description: "test_pobratski")
-        var channel: String?
         
         makeSUT().fetch(for: urlForTest) { result in
             
             switch result {
             case .success(let resp):
-                channel = resp.uploaderURL
+                XCTAssertEqual(resp.uploaderURL, "http://www.youtube.com/channel/UCelUU2gmSw3A0KWo364vIJg")
             case .failure(let error):
-                print(error)
+                XCTAssertNil(error)
             }
             
             exp.fulfill()
         }
         
         wait(for: [exp], timeout: 30)
-        XCTAssertEqual(channel, "http://www.youtube.com/channel/UCelUU2gmSw3A0KWo364vIJg")
     }
 }

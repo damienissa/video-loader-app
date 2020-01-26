@@ -6,6 +6,12 @@
 //  Copyright © 2020 Virych. All rights reserved.
 //
 
+public struct DefaultResponse: Codable {
+    
+    public let status: Bool
+    public let message: String
+}
+
 public struct FetchResponse: Codable {
    
     public let status: Bool

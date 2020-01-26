@@ -8,15 +8,19 @@
 
 import Networking
 
-public final class FetchService {
+public final class FetchService<Processor: ResponseProcessor> {
     
-    private let processor = Processor()
-    private let service = NetworkService()
+    private let processor: Processor
+    private let service: NetworkingService
     
-    public init() { }
+    public init(service: NetworkingService, processor: Processor) {
+        
+        self.service = service
+        self.processor = processor
+    }
     
     public func fetch(for url: URL,
-               completion: @escaping (Result<FetchResponse, Error>) -> Void) {
+                      completion: @escaping (Processor.ProcessingResult) -> Void) {
         
         service.execute(createRequest(with: url), processor: processor, completion: completion)
     }

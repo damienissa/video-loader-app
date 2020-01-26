@@ -6,7 +6,9 @@
 //  Copyright © 2020 Virych. All rights reserved.
 //
 
-public final class NetworkService {
+import Alamofire
+
+public final class NetworkService: NetworkingService {
     
     private let session: URLSession
     
@@ -24,4 +26,17 @@ public final class NetworkService {
             completion(processor.process((d, r, e)))
         }.resume()
     }
+    
+    public func download(url: URL, destURL: URL?, completion: @escaping (URL?) -> Void) {
+        
+        session.downloadTask(with: url) { localURL, urlResponse, error in
+        
+            completion(localURL)
+        }.resume()
+        
+//        Alamofire.download(url) { (<#URL#>, <#HTTPURLResponse#>) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
+//            <#code#>
+//        }
+    }
 }
+
