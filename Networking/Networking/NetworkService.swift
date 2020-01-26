@@ -11,6 +11,7 @@ import Alamofire
 public final class NetworkService: NetworkingService {
     
     private let session: URLSession
+    private let manager = DownloadManager()
     
     
     // MARK: - Init
@@ -27,16 +28,10 @@ public final class NetworkService: NetworkingService {
         }.resume()
     }
     
-    public func download(url: URL, destURL: URL?, completion: @escaping (URL?) -> Void) {
+    public func download(item: Downloadable, completion: @escaping (Downloadable, Error?) -> Void) {
         
-        session.downloadTask(with: url) { localURL, urlResponse, error in
-        
-            completion(localURL)
-        }.resume()
-        
-//        Alamofire.download(url) { (<#URL#>, <#HTTPURLResponse#>) -> (destinationURL: URL, options: DownloadRequest.DownloadOptions) in
-//            <#code#>
-//        }
+        item.didFinishDownloading = completion
+        manager.download(items: [item])
     }
 }
 

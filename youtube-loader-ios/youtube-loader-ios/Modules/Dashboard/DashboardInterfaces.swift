@@ -18,6 +18,7 @@ protocol DashboardWireframeInterface {
 protocol DashboardViewInterface: ViewInterface {
 
     func fill(_ viewModel: VideoViewModel)
+    func fill(_ error: Error)
 }
 
 protocol DashboardPresenterInterface: PresenterInterface {

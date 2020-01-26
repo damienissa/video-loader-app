@@ -15,7 +15,7 @@ final class DetailInteractor {
     
     let service: NetworkingService
     
-    var output: ((URL?) -> Void)!
+    var output: ((Downloadable, Error?) -> Void)!
     
     init(service: NetworkingService) {
         
@@ -27,8 +27,8 @@ final class DetailInteractor {
 
 extension DetailInteractor: DetailInteractorInterface {
     
-    func download(_ url: URL) {
+    func download(_ item: Downloadable) {
         
-        service.download(url: url, destURL: <#URL?#>, completion: output)
+        service.download(item: item, completion: output)
     }
 }

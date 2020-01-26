@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-protocol Downloadable {
+public protocol Downloadable: class {
     
     var id: String { get }
     var fileSize: Int { get }
@@ -29,8 +29,6 @@ let kDownloadManagerDidStartDownloadingNotification = "DownloadManagerDidStartDo
 let kDownloadManagerDidFinishDownloadingNotification = "DownloadManagerDidFinishDownloadingNotification"
 let kDownloadManagerDidRemoveNotification = "DownloadManagerDidRemoveNotification"
 
-let sessionIdentifier = "com.sleepwell.background"
-
 
 // MARK: - DownloadManaager
 
@@ -47,11 +45,7 @@ class DownloadManager: NSObject {
         }
     }
     
-    fileprivate let downloadManager: SessionManager = {
-        let configuration = URLSessionConfiguration.background(withIdentifier: sessionIdentifier)
-        configuration.httpMaximumConnectionsPerHost = 1
-        return SessionManager(configuration: configuration)
-    }()
+    fileprivate let downloadManager = SessionManager()
     fileprivate var queue = [Downloadable]()
     fileprivate var downloadRequests = [DownloadRequest]()
     

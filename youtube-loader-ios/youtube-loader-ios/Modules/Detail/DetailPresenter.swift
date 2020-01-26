@@ -10,6 +10,29 @@
 
 import UIKit
 import AVFoundation
+import Networking
+
+public class DownloadItem: Downloadable {
+    
+    public let id: String
+    public let fileSize: Int
+    public let url: URL
+    public let destinationUrl: URL
+    public let downloaded: Bool
+    
+    public var didStartDownloading: ((Downloadable) -> Void)?
+    public var didUpdateProgress: ((Downloadable, Int) -> Void)?
+    public var didFinishDownloading: ((Downloadable, Error?) -> Void)?
+    
+    init(_ url: URL, dest: URL) {
+        
+        self.id = UUID().uuidString
+        self.fileSize = -1
+        self.url = url
+        self.destinationUrl = dest
+        self.downloaded = false
+    }
+}
 
 final class DetailPresenter {
 
@@ -31,8 +54,8 @@ final class DetailPresenter {
         self.interactor = interactor
         self.wireframe = wireframe
         
-        interactor.output = { [weak self] url in
-            self?.process(local: url)
+        interactor.output = { [weak self] (item, error) in
+            self?.process(local: item.destinationUrl)
         }
     }
 }
@@ -58,14 +81,15 @@ extension DetailPresenter: DetailPresenterInterface {
     
     func download(at row: Int) {
         
-        if let url = URL(string: viewModel.streams[row].url) {
+        currentExt = viewModel.streams[row].extension
+        
+        if let url = URL(string: viewModel.streams[row].url), let destenation = destinationURL(file: url) {
             
-            currentExt = viewModel.streams[row].extension
-            interactor.download(url)
+            interactor.download(DownloadItem(url, dest: destenation))
         }
     }
     
-    func move(file url: URL) -> URL? {
+    func destinationURL(file url: URL) -> URL? {
         
         guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
@@ -73,14 +97,12 @@ extension DetailPresenter: DetailPresenterInterface {
         
         let destinationURL = documentsDirectoryURL.appendingPathComponent(UUID().uuidString).appendingPathExtension(currentExt)
         
-        try? FileManager.default.moveItem(at: url, to: destinationURL)
-        
         return destinationURL
     }
     
     func process(local url: URL?) {
         
-        guard let url = move(file: url!) else {
+        guard let url = url else {
             return
         }
         

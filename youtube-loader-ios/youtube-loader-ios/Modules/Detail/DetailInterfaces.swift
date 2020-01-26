@@ -10,6 +10,7 @@
 
 import UIKit
 import BaseViper
+import Networking
 
 protocol DetailWireframeInterface: BaseWireframe {
 }
@@ -31,6 +32,6 @@ protocol DetailPresenterInterface: PresenterInterface {
 
 protocol DetailInteractorInterface: InteractorInterface {
     
-    var output: ((URL?) -> Void)! { get set }
-    func download(_ url: URL)
+    var output: ((Downloadable, Error?) -> Void)! { get set }
+    func download(_ item: Downloadable)
 }

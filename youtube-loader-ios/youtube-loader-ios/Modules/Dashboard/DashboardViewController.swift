@@ -12,6 +12,7 @@ import UIKit
 
 final class DashboardViewController: UIViewController {
     
+    @IBOutlet private weak var errorLabel: UILabel!
     @IBOutlet private weak var textField: UITextField!
     
     var hud: HUD?
@@ -44,6 +45,14 @@ extension DashboardViewController: DashboardViewInterface {
     func fill(_ viewModel: VideoViewModel) {
 
         hud?.hide()
+        errorLabel.isHidden = true
         navigationController?.pushWireframe(DetailWireframe(viewModel: viewModel))
+    }
+    
+    func fill(_ error: Error) {
+        
+        hud?.hide()
+        errorLabel.isHidden = false
+        errorLabel.text = "\(error)"
     }
 }

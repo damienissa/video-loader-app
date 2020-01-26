@@ -11,15 +11,15 @@
 import UIKit
 
 final class DashboardPresenter<Interactor: DashboardInteractorInterface> {
-
+    
     // MARK: - Private properties -
-
+    
     private unowned let view: DashboardViewInterface
     private let interactor: Interactor
     private let wireframe: DashboardWireframeInterface
-
+    
     // MARK: - Lifecycle -
-
+    
     init(view: DashboardViewInterface, interactor: Interactor, wireframe: DashboardWireframeInterface) {
         self.view = view
         self.interactor = interactor
@@ -29,21 +29,18 @@ final class DashboardPresenter<Interactor: DashboardInteractorInterface> {
         }
     }
     
-    func process(_ viewModel: VideoViewModel) {
-        
-        DispatchQueue.main.async { [weak self] in
-            self?.view.fill(viewModel)
-        }
-        
-    }
-    
     func convert(_ result: ProcessingResult) {
-        
-        switch result {
-        case let .success(response):
-            process(VideoViewModelFactory.createViewMode(from: response))
-        case let .failure(error):
-            print(error)
+       
+        DispatchQueue.main.async { [weak self] in
+           
+            switch result {
+            case let .success(response):
+    
+                self?.view.fill(VideoViewModelFactory.createViewMode(from: response))
+                
+            case let .failure(error):
+                self?.view.fill(error)
+            }
         }
     }
 }

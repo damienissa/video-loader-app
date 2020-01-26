@@ -18,6 +18,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="lEp-6e-FHr">
                                 <rect key="frame" x="58" y="285.5" width="259" height="96"/>
                                 <subviews>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsT-m2-bvZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="259" height="0.0"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="asK-mM-Foa">
                                         <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -42,6 +48,7 @@
                         <viewLayoutGuide key="safeArea" id="3pi-N7-nbV"/>
                     </view>
                     <connections>
+                        <outlet property="errorLabel" destination="XsT-m2-bvZ" id="Ooi-h4-xpk"/>
                         <outlet property="textField" destination="asK-mM-Foa" id="6AV-5g-o5n"/>
                     </connections>
                 </viewController>

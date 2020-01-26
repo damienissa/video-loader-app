@@ -12,5 +12,5 @@ public protocol NetworkingService {
     func execute<Processor: ResponseProcessor>(_ request: URLRequest,
                                                processor: Processor,
                                                completion: @escaping (Processor.ProcessingResult) -> Void)
-    func download(url: URL, destURL: URL?, completion: @escaping (URL?) -> Void)
+    func download(item: Downloadable, completion: @escaping (Downloadable, Error?) -> Void)
 }
