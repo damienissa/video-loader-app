@@ -33,6 +33,8 @@ public final class FetchService<Processor: ResponseProcessor> {
             "x-rapidapi-key": "XVUjZNU8ctmshJX55lqaZaN943fkp1oPusejsn9S4lZa198c3Q"
         ]
         
+        requst.cachePolicy = .reloadIgnoringLocalCacheData
+        
         return requst
     }
 }

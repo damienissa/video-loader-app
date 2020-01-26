@@ -9,15 +9,16 @@
 //
 
 import Foundation
+import Core
 
 final class DashboardInteractor {
 
-    var output: ((ProcessingResult) -> Void)!
-    let service: FetchService
+    var output: FetchResultBlock!
+    let engine: Engine
     
-    init(service: FetchService) {
+    init() {
         
-        self.service = service
+        self.engine = Engine()
     }
 }
 
@@ -27,6 +28,6 @@ extension DashboardInteractor: DashboardInteractorInterface {
     
     func fetchData(_ url: URL) {
         
-        service.fetch(for: url, completion: output)
+        engine.fetchInfo(for: url, completion: output)
     }
 }

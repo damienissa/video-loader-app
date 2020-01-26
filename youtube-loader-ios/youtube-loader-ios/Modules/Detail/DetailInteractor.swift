@@ -9,26 +9,25 @@
 //
 
 import Foundation
-import Networking
+import Core
 
 final class DetailInteractor {
     
-    let service: NetworkingService
-    
-    var output: ((Downloadable, Error?) -> Void)!
-    
-    init(service: NetworkingService) {
-        
-        self.service = service
-    }
+    let engine = Engine()
+    var output: ((Resource?, Error?) -> Void)!
 }
 
 // MARK: - Extensions -
 
 extension DetailInteractor: DetailInteractorInterface {
     
-    func download(_ item: Downloadable) {
+    func download(_ item: Resource) {
         
-        service.download(item: item, completion: output)
+        engine.download(item: item, completion: output)
+    }
+    
+    func set(dest: String, for resource: Resource) {
+        
+        engine.set(destenation: dest, for: resource)
     }
 }

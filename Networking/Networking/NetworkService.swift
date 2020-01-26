@@ -12,6 +12,7 @@ public final class NetworkService: NetworkingService {
     
     private let session: URLSession
     private let manager = DownloadManager()
+    private var completion: ((Downloadable, Error?) -> Void)?
     
     
     // MARK: - Init
@@ -19,6 +20,8 @@ public final class NetworkService: NetworkingService {
     public init(session: URLSession = .shared) {
         
         self.session = session
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didRecieve), name: Notification.Name(rawValue: kDownloadManagerDidFinishDownloadingNotification), object: nil)
     }
     
     public func execute<Processor: ResponseProcessor>(_ request: URLRequest, processor: Processor, completion: @escaping (Processor.ProcessingResult) -> Void) {
@@ -30,8 +33,15 @@ public final class NetworkService: NetworkingService {
     
     public func download(item: Downloadable, completion: @escaping (Downloadable, Error?) -> Void) {
         
-        item.didFinishDownloading = completion
+        self.completion = completion
         manager.download(items: [item])
+    }
+    
+    @objc private func didRecieve(_ notification: Notification) {
+        
+        if let obj = notification.object as? Downloadable {
+            completion?(obj, notification.userInfo?["error"] as? Error)
+        }
     }
 }
 

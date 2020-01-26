@@ -11,7 +11,7 @@ public struct Stream: Codable {
     public let format, formatNote: String
     public let streamExtension: String
     public let videoCodec: String
-    public let audioCodec: AudioCodec
+    public let audioCodec: String
     public let height, width, fps: Int?
     public let fmtID: String
     public let filesize: Int?
@@ -32,12 +32,4 @@ public struct Stream: Codable {
         case hasVideo = "has_video"
         case isHD = "is_hd"
     }
-}
-
-
-public enum AudioCodec: String, Codable {
-    case mp4A402 = "mp4a.40.2"
-    case none = "none"
-    case opus = "opus"
-    case vorbis = "vorbis"
 }

@@ -10,12 +10,6 @@
 
 import UIKit
 import BaseViper
-import BusinessLogic
-import Networking
-
-typealias FetchResponse = BusinessLogic.FetchResponse
-typealias ProcessingResult = Result<FetchResponse, Error>
-typealias FetchService = BusinessLogic.FetchService<Processor>
 
 final class DashboardWireframe: BaseWireframe {
     
@@ -29,7 +23,7 @@ final class DashboardWireframe: BaseWireframe {
         let moduleViewController = storyboard.instantiateViewController(ofType: DashboardViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = DashboardInteractor(service: FetchService(service: NetworkService(), processor: Processor()))
+        let interactor = DashboardInteractor()
         let presenter = DashboardPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }

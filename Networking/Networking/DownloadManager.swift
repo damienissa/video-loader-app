@@ -12,14 +12,9 @@ import Alamofire
 public protocol Downloadable: class {
     
     var id: String { get }
-    var fileSize: Int { get }
     var url: URL { get }
-    var destinationUrl: URL { get }
+    var destinationUrl: URL? { get }
     var downloaded: Bool { get }
-    
-    var didStartDownloading: ((Downloadable) -> Void)? { get set }
-    var didUpdateProgress: ((Downloadable, Int) -> Void)? { get set }
-    var didFinishDownloading: ((Downloadable, Error?) -> Void)? { get set }
 }
 
 // MARK: - Notifications
@@ -118,7 +113,6 @@ class DownloadManager: NSObject {
         
         DispatchQueue.main.async {
             
-            item.didStartDownloading?(item)
             NotificationCenter.default.post(name: Notification.Name(rawValue: kDownloadManagerDidStartDownloadingNotification), object: item, userInfo: nil)
         }
         
@@ -126,7 +120,7 @@ class DownloadManager: NSObject {
             
             DispatchQueue.main.sync {
                 
-                return (item.destinationUrl, [.createIntermediateDirectories])
+                return (item.destinationUrl!, [.createIntermediateDirectories])
             }
         }
       
@@ -136,8 +130,8 @@ class DownloadManager: NSObject {
         request.downloadProgress { progress in
             
             DispatchQueue.main.async {
-                item.didUpdateProgress?(item, Int( Float(progress.completedUnitCount) / Float(progress.totalUnitCount) * 100) )
-                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: kDownloadManagerDidUpdateProgressNotification), object: item, userInfo: nil))
+                let percent = Int( Float(progress.completedUnitCount) / Float(progress.totalUnitCount) * 100)
+                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: kDownloadManagerDidUpdateProgressNotification), object: item, userInfo: ["percent": percent]))
             }
         }
         
@@ -151,9 +145,7 @@ class DownloadManager: NSObject {
                     print("\(error)")
                 }
                 
-                item.didFinishDownloading?(item, response.error)
-                
-                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: kDownloadManagerDidFinishDownloadingNotification), object: item, userInfo: nil))
+                NotificationCenter.default.post(Notification(name: Notification.Name(rawValue: kDownloadManagerDidFinishDownloadingNotification), object: item, userInfo: ["error": response.error ?? Unknown.error]))
             }
         }
     }
@@ -197,7 +189,7 @@ class DownloadManager: NSObject {
     
     fileprivate func remove(item: Downloadable) {
         
-        let filePath = item.destinationUrl.path
+        let filePath = item.destinationUrl!.path
         guard FileManager.default.fileExists(atPath: filePath) else {
             return
         }
@@ -216,17 +208,5 @@ class DownloadManager: NSObject {
         return downloadRequests.first(where: { request -> Bool in
             return request.request?.url == item.url
         })
-    }
-    
-    
-    // MARK: Helpers
-    
-    fileprivate func getQueueFilesSize() -> Int {
-        
-        var size = 0
-        for item in queue {
-            size += item.fileSize
-        }
-        return size
     }
 }

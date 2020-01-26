@@ -10,6 +10,7 @@
 
 import UIKit
 import BaseViper
+import Core
 
 protocol DashboardWireframeInterface {
 
@@ -17,7 +18,7 @@ protocol DashboardWireframeInterface {
 
 protocol DashboardViewInterface: ViewInterface {
 
-    func fill(_ viewModel: VideoViewModel)
+    func fill(_ viewModel: Video)
     func fill(_ error: Error)
 }
 
@@ -29,8 +30,8 @@ protocol DashboardPresenterInterface: PresenterInterface {
 
 protocol DashboardInteractorInterface: InteractorInterface {
     
-    var service: FetchService { get }
-    var output: ((ProcessingResult) -> Void)! { get set }
+    var engine: Engine { get }
+    var output: FetchResultBlock! { get set }
     
     func fetchData(_ url: URL)
 }

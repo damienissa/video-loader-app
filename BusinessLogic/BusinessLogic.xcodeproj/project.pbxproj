@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		154585FD23DCEA8000A9F2A4 /* BusinessLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154585F323DCEA7F00A9F2A4 /* BusinessLogic.framework */; };
+		154585FD23DCEA8000A9F2A4 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154585F323DCEA7F00A9F2A4 /* Core.framework */; };
 		1545860223DCEA8000A9F2A4 /* BusinessLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545860123DCEA8000A9F2A4 /* BusinessLogicTests.swift */; };
 		1545860423DCEA8000A9F2A4 /* BusinessLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 154585F623DCEA7F00A9F2A4 /* BusinessLogic.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1545860F23DCEA9D00A9F2A4 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1545860E23DCEA9D00A9F2A4 /* Networking.framework */; };
@@ -17,6 +17,11 @@
 		1545861823DCEB5200A9F2A4 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861723DCEB5200A9F2A4 /* Stream.swift */; };
 		1545861A23DCEBB500A9F2A4 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861923DCEBB500A9F2A4 /* Processor.swift */; };
 		1545861D23DCED2700A9F2A4 /* URLResponse+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861C23DCED2700A9F2A4 /* URLResponse+Status.swift */; };
+		15951D2123DDC78A00AEA993 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D2023DDC78A00AEA993 /* RealmSwift */; };
+		15951D2323DDC7DF00AEA993 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */; };
+		15951D2923DDC8A400AEA993 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2823DDC8A400AEA993 /* Engine.swift */; };
+		15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2A23DDCABE00AEA993 /* VideoFactory.swift */; };
+		15951D2D23DDCAE300AEA993 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2C23DDCAE300AEA993 /* Video.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,7 +49,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		154585F323DCEA7F00A9F2A4 /* BusinessLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BusinessLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		154585F323DCEA7F00A9F2A4 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		154585F623DCEA7F00A9F2A4 /* BusinessLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessLogic.h; sourceTree = "<group>"; };
 		154585F723DCEA7F00A9F2A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		154585FC23DCEA8000A9F2A4 /* BusinessLogicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BusinessLogicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -56,6 +61,10 @@
 		1545861723DCEB5200A9F2A4 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		1545861923DCEBB500A9F2A4 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
 		1545861C23DCED2700A9F2A4 /* URLResponse+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Status.swift"; sourceTree = "<group>"; };
+		15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		15951D2823DDC8A400AEA993 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
+		15951D2A23DDCABE00AEA993 /* VideoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFactory.swift; sourceTree = "<group>"; };
+		15951D2C23DDCAE300AEA993 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15951D2123DDC78A00AEA993 /* RealmSwift in Frameworks */,
 				1545860F23DCEA9D00A9F2A4 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,7 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				154585FD23DCEA8000A9F2A4 /* BusinessLogic.framework in Frameworks */,
+				154585FD23DCEA8000A9F2A4 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +101,7 @@
 		154585F423DCEA7F00A9F2A4 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				154585F323DCEA7F00A9F2A4 /* BusinessLogic.framework */,
+				154585F323DCEA7F00A9F2A4 /* Core.framework */,
 				154585FC23DCEA8000A9F2A4 /* BusinessLogicTests.xctest */,
 			);
 			name = Products;
@@ -100,12 +110,14 @@
 		154585F523DCEA7F00A9F2A4 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				15951D1E23DDC63500AEA993 /* Database */,
 				1545861B23DCED1500A9F2A4 /* Helpers */,
 				1545861423DCEAFA00A9F2A4 /* Models */,
 				154585F623DCEA7F00A9F2A4 /* BusinessLogic.h */,
 				154585F723DCEA7F00A9F2A4 /* Info.plist */,
 				1545861223DCEAB600A9F2A4 /* FetchService.swift */,
 				1545861923DCEBB500A9F2A4 /* Processor.swift */,
+				15951D2823DDC8A400AEA993 /* Engine.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -132,6 +144,8 @@
 			children = (
 				1545861523DCEB0E00A9F2A4 /* Response.swift */,
 				1545861723DCEB5200A9F2A4 /* Stream.swift */,
+				15951D2A23DDCABE00AEA993 /* VideoFactory.swift */,
+				15951D2C23DDCAE300AEA993 /* Video.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -142,6 +156,14 @@
 				1545861C23DCED2700A9F2A4 /* URLResponse+Status.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		15951D1E23DDC63500AEA993 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,9 +180,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		154585F223DCEA7F00A9F2A4 /* BusinessLogic */ = {
+		154585F223DCEA7F00A9F2A4 /* Core */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1545860723DCEA8000A9F2A4 /* Build configuration list for PBXNativeTarget "BusinessLogic" */;
+			buildConfigurationList = 1545860723DCEA8000A9F2A4 /* Build configuration list for PBXNativeTarget "Core" */;
 			buildPhases = (
 				154585EE23DCEA7F00A9F2A4 /* Headers */,
 				154585EF23DCEA7F00A9F2A4 /* Sources */,
@@ -172,9 +194,12 @@
 			);
 			dependencies = (
 			);
-			name = BusinessLogic;
+			name = Core;
+			packageProductDependencies = (
+				15951D2023DDC78A00AEA993 /* RealmSwift */,
+			);
 			productName = BusinessLogic;
-			productReference = 154585F323DCEA7F00A9F2A4 /* BusinessLogic.framework */;
+			productReference = 154585F323DCEA7F00A9F2A4 /* Core.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		154585FB23DCEA8000A9F2A4 /* BusinessLogicTests */ = {
@@ -223,11 +248,14 @@
 				Base,
 			);
 			mainGroup = 154585E923DCEA7F00A9F2A4;
+			packageReferences = (
+				15951D1F23DDC78A00AEA993 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+			);
 			productRefGroup = 154585F423DCEA7F00A9F2A4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				154585F223DCEA7F00A9F2A4 /* BusinessLogic */,
+				154585F223DCEA7F00A9F2A4 /* Core */,
 				154585FB23DCEA8000A9F2A4 /* BusinessLogicTests */,
 			);
 		};
@@ -257,9 +285,13 @@
 			files = (
 				1545861623DCEB0E00A9F2A4 /* Response.swift in Sources */,
 				1545861D23DCED2700A9F2A4 /* URLResponse+Status.swift in Sources */,
+				15951D2323DDC7DF00AEA993 /* DatabaseManager.swift in Sources */,
 				1545861823DCEB5200A9F2A4 /* Stream.swift in Sources */,
+				15951D2D23DDCAE300AEA993 /* Video.swift in Sources */,
+				15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */,
 				1545861A23DCEBB500A9F2A4 /* Processor.swift in Sources */,
 				1545861323DCEAB600A9F2A4 /* FetchService.swift in Sources */,
+				15951D2923DDC8A400AEA993 /* Engine.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +308,7 @@
 /* Begin PBXTargetDependency section */
 		154585FF23DCEA8000A9F2A4 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 154585F223DCEA7F00A9F2A4 /* BusinessLogic */;
+			target = 154585F223DCEA7F00A9F2A4 /* Core */;
 			targetProxy = 154585FE23DCEA8000A9F2A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -503,7 +535,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1545860723DCEA8000A9F2A4 /* Build configuration list for PBXNativeTarget "BusinessLogic" */ = {
+		1545860723DCEA8000A9F2A4 /* Build configuration list for PBXNativeTarget "Core" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1545860823DCEA8000A9F2A4 /* Debug */,
@@ -522,6 +554,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		15951D1F23DDC78A00AEA993 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.3.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		15951D2023DDC78A00AEA993 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15951D1F23DDC78A00AEA993 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 154585EA23DCEA7F00A9F2A4 /* Project object */;
 }

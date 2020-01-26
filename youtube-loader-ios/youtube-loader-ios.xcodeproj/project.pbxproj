@@ -18,12 +18,6 @@
 		15951CF823DD81E800AEA993 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951CF223DD81E800AEA993 /* DashboardViewController.swift */; };
 		15951CF923DD81E800AEA993 /* DashboardInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951CF323DD81E800AEA993 /* DashboardInteractor.swift */; };
 		15951CFA23DD81E800AEA993 /* DashboardWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951CF423DD81E800AEA993 /* DashboardWireframe.swift */; };
-		15951CFC23DD831700AEA993 /* BusinessLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15951CFB23DD831700AEA993 /* BusinessLogic.framework */; };
-		15951CFD23DD831700AEA993 /* BusinessLogic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15951CFB23DD831700AEA993 /* BusinessLogic.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		15951D0023DD860900AEA993 /* Networking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15951CFF23DD860900AEA993 /* Networking.framework */; };
-		15951D0123DD860900AEA993 /* Networking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15951CFF23DD860900AEA993 /* Networking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		15951D0423DD903E00AEA993 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0323DD903E00AEA993 /* VideoViewModel.swift */; };
-		15951D0623DD905A00AEA993 /* VideoViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0523DD905A00AEA993 /* VideoViewModelFactory.swift */; };
 		15951D0E23DD924600AEA993 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15951D0823DD924600AEA993 /* Detail.storyboard */; };
 		15951D0F23DD924600AEA993 /* DetailInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0923DD924600AEA993 /* DetailInterfaces.swift */; };
 		15951D1023DD924600AEA993 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0A23DD924600AEA993 /* DetailPresenter.swift */; };
@@ -32,6 +26,16 @@
 		15951D1323DD924600AEA993 /* DetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0D23DD924600AEA993 /* DetailWireframe.swift */; };
 		15951D1623DD935200AEA993 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D1523DD935200AEA993 /* SDWebImage */; };
 		15951D1823DD976F00AEA993 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D1723DD976F00AEA993 /* HUD.swift */; };
+		15951D2523DDC80000AEA993 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15951D2423DDC80000AEA993 /* Core.framework */; };
+		15951D2623DDC80000AEA993 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15951D2423DDC80000AEA993 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		15951D3923DDD2E800AEA993 /* Recent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15951D3323DDD2E800AEA993 /* Recent.storyboard */; };
+		15951D3A23DDD2E800AEA993 /* RecentInterfaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3423DDD2E800AEA993 /* RecentInterfaces.swift */; };
+		15951D3B23DDD2E800AEA993 /* RecentPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3523DDD2E800AEA993 /* RecentPresenter.swift */; };
+		15951D3C23DDD2E800AEA993 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3623DDD2E800AEA993 /* RecentViewController.swift */; };
+		15951D3D23DDD2E800AEA993 /* RecentInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3723DDD2E800AEA993 /* RecentInteractor.swift */; };
+		15951D3E23DDD2E800AEA993 /* RecentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3823DDD2E800AEA993 /* RecentWireframe.swift */; };
+		15951D4023DDD4E300AEA993 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3F23DDD4E300AEA993 /* String+URL.swift */; };
+		15951D4223DDD69E00AEA993 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4123DDD69E00AEA993 /* TabBarViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,14 +49,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		15951CFE23DD831700AEA993 /* Embed Frameworks */ = {
+		15951D2723DDC80000AEA993 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				15951D0123DD860900AEA993 /* Networking.framework in Embed Frameworks */,
-				15951CFD23DD831700AEA993 /* BusinessLogic.framework in Embed Frameworks */,
+				15951D2623DDC80000AEA993 /* Core.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,8 +80,6 @@
 		15951CF423DD81E800AEA993 /* DashboardWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardWireframe.swift; sourceTree = "<group>"; };
 		15951CFB23DD831700AEA993 /* BusinessLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BusinessLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		15951CFF23DD860900AEA993 /* Networking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Networking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		15951D0323DD903E00AEA993 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
-		15951D0523DD905A00AEA993 /* VideoViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModelFactory.swift; sourceTree = "<group>"; };
 		15951D0823DD924600AEA993 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
 		15951D0923DD924600AEA993 /* DetailInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInterfaces.swift; sourceTree = "<group>"; };
 		15951D0A23DD924600AEA993 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
@@ -86,6 +87,15 @@
 		15951D0C23DD924600AEA993 /* DetailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailInteractor.swift; sourceTree = "<group>"; };
 		15951D0D23DD924600AEA993 /* DetailWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWireframe.swift; sourceTree = "<group>"; };
 		15951D1723DD976F00AEA993 /* HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HUD.swift; sourceTree = "<group>"; };
+		15951D2423DDC80000AEA993 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		15951D3323DDD2E800AEA993 /* Recent.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Recent.storyboard; sourceTree = "<group>"; };
+		15951D3423DDD2E800AEA993 /* RecentInterfaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentInterfaces.swift; sourceTree = "<group>"; };
+		15951D3523DDD2E800AEA993 /* RecentPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentPresenter.swift; sourceTree = "<group>"; };
+		15951D3623DDD2E800AEA993 /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
+		15951D3723DDD2E800AEA993 /* RecentInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentInteractor.swift; sourceTree = "<group>"; };
+		15951D3823DDD2E800AEA993 /* RecentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWireframe.swift; sourceTree = "<group>"; };
+		15951D3F23DDD4E300AEA993 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
+		15951D4123DDD69E00AEA993 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,9 +104,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1545862D23DD809800A9F2A4 /* BaseViper in Frameworks */,
-				15951CFC23DD831700AEA993 /* BusinessLogic.framework in Frameworks */,
+				15951D2523DDC80000AEA993 /* Core.framework in Frameworks */,
 				15951D1623DD935200AEA993 /* SDWebImage in Frameworks */,
-				15951D0023DD860900AEA993 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +145,7 @@
 				15951CE123DD80E000AEA993 /* Modules */,
 				1545862323DD7FFD00A9F2A4 /* Resources */,
 				1545859823DCE2E300A9F2A4 /* AppDelegate.swift */,
+				15951D3F23DDD4E300AEA993 /* String+URL.swift */,
 			);
 			path = "youtube-loader-ios";
 			sourceTree = "<group>";
@@ -152,6 +162,7 @@
 		154585BA23DCE32400A9F2A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15951D2423DDC80000AEA993 /* Core.framework */,
 				15951CFF23DD860900AEA993 /* Networking.framework */,
 				15951CFB23DD831700AEA993 /* BusinessLogic.framework */,
 				154585BB23DCE32400A9F2A4 /* Loader.framework */,
@@ -172,8 +183,10 @@
 		15951CE123DD80E000AEA993 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				15951D3223DDD2D900AEA993 /* Recent */,
 				15951D0723DD923900AEA993 /* Detail */,
 				15951CE223DD80E700AEA993 /* Dashboard */,
+				15951D4123DDD69E00AEA993 /* TabBarViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -181,7 +194,6 @@
 		15951CE223DD80E700AEA993 /* Dashboard */ = {
 			isa = PBXGroup;
 			children = (
-				15951D0223DD903200AEA993 /* ViewModel */,
 				15951CEF23DD81E800AEA993 /* Dashboard.storyboard */,
 				15951CF023DD81E800AEA993 /* DashboardInterfaces.swift */,
 				15951CF123DD81E800AEA993 /* DashboardPresenter.swift */,
@@ -190,15 +202,6 @@
 				15951CF423DD81E800AEA993 /* DashboardWireframe.swift */,
 			);
 			path = Dashboard;
-			sourceTree = "<group>";
-		};
-		15951D0223DD903200AEA993 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				15951D0323DD903E00AEA993 /* VideoViewModel.swift */,
-				15951D0523DD905A00AEA993 /* VideoViewModelFactory.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		15951D0723DD923900AEA993 /* Detail */ = {
@@ -214,6 +217,19 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		15951D3223DDD2D900AEA993 /* Recent */ = {
+			isa = PBXGroup;
+			children = (
+				15951D3323DDD2E800AEA993 /* Recent.storyboard */,
+				15951D3423DDD2E800AEA993 /* RecentInterfaces.swift */,
+				15951D3523DDD2E800AEA993 /* RecentPresenter.swift */,
+				15951D3623DDD2E800AEA993 /* RecentViewController.swift */,
+				15951D3723DDD2E800AEA993 /* RecentInteractor.swift */,
+				15951D3823DDD2E800AEA993 /* RecentWireframe.swift */,
+			);
+			path = Recent;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -224,7 +240,7 @@
 				1545859123DCE2E300A9F2A4 /* Sources */,
 				1545859223DCE2E300A9F2A4 /* Frameworks */,
 				1545859323DCE2E300A9F2A4 /* Resources */,
-				15951CFE23DD831700AEA993 /* Embed Frameworks */,
+				15951D2723DDC80000AEA993 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -308,6 +324,7 @@
 				15951CF523DD81E800AEA993 /* Dashboard.storyboard in Resources */,
 				1545862923DD7FFD00A9F2A4 /* LaunchScreen.storyboard in Resources */,
 				15951D0E23DD924600AEA993 /* Detail.storyboard in Resources */,
+				15951D3923DDD2E800AEA993 /* Recent.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,15 +342,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15951D4023DDD4E300AEA993 /* String+URL.swift in Sources */,
 				15951D1123DD924600AEA993 /* DetailViewController.swift in Sources */,
 				15951CF923DD81E800AEA993 /* DashboardInteractor.swift in Sources */,
-				15951D0623DD905A00AEA993 /* VideoViewModelFactory.swift in Sources */,
+				15951D3E23DDD2E800AEA993 /* RecentWireframe.swift in Sources */,
+				15951D4223DDD69E00AEA993 /* TabBarViewController.swift in Sources */,
+				15951D3D23DDD2E800AEA993 /* RecentInteractor.swift in Sources */,
 				15951D1223DD924600AEA993 /* DetailInteractor.swift in Sources */,
 				15951CFA23DD81E800AEA993 /* DashboardWireframe.swift in Sources */,
+				15951D3C23DDD2E800AEA993 /* RecentViewController.swift in Sources */,
 				15951D1023DD924600AEA993 /* DetailPresenter.swift in Sources */,
 				15951CF623DD81E800AEA993 /* DashboardInterfaces.swift in Sources */,
+				15951D3A23DDD2E800AEA993 /* RecentInterfaces.swift in Sources */,
 				1545859923DCE2E300A9F2A4 /* AppDelegate.swift in Sources */,
-				15951D0423DD903E00AEA993 /* VideoViewModel.swift in Sources */,
+				15951D3B23DDD2E800AEA993 /* RecentPresenter.swift in Sources */,
 				15951CF723DD81E800AEA993 /* DashboardPresenter.swift in Sources */,
 				15951D0F23DD924600AEA993 /* DetailInterfaces.swift in Sources */,
 				15951D1823DD976F00AEA993 /* HUD.swift in Sources */,

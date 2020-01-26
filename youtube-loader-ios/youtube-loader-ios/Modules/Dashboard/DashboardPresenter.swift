@@ -9,6 +9,7 @@
 //
 
 import UIKit
+import Core
 
 final class DashboardPresenter<Interactor: DashboardInteractorInterface> {
     
@@ -29,14 +30,14 @@ final class DashboardPresenter<Interactor: DashboardInteractorInterface> {
         }
     }
     
-    func convert(_ result: ProcessingResult) {
+    func convert(_ result: FetchResult) {
        
         DispatchQueue.main.async { [weak self] in
            
             switch result {
             case let .success(response):
     
-                self?.view.fill(VideoViewModelFactory.createViewMode(from: response))
+                self?.view.fill(response)
                 
             case let .failure(error):
                 self?.view.fill(error)

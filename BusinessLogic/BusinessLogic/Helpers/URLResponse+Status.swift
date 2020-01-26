@@ -6,6 +6,8 @@
 //  Copyright © 2020 Virych. All rights reserved.
 //
 
+import Foundation
+
 public extension URLResponse {
     
     var status: Int {

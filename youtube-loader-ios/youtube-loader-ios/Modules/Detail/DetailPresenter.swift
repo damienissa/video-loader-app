@@ -10,29 +10,7 @@
 
 import UIKit
 import AVFoundation
-import Networking
-
-public class DownloadItem: Downloadable {
-    
-    public let id: String
-    public let fileSize: Int
-    public let url: URL
-    public let destinationUrl: URL
-    public let downloaded: Bool
-    
-    public var didStartDownloading: ((Downloadable) -> Void)?
-    public var didUpdateProgress: ((Downloadable, Int) -> Void)?
-    public var didFinishDownloading: ((Downloadable, Error?) -> Void)?
-    
-    init(_ url: URL, dest: URL) {
-        
-        self.id = UUID().uuidString
-        self.fileSize = -1
-        self.url = url
-        self.destinationUrl = dest
-        self.downloaded = false
-    }
-}
+import Core
 
 final class DetailPresenter {
 
@@ -42,7 +20,7 @@ final class DetailPresenter {
     private let interactor: DetailInteractorInterface
     private let wireframe: DetailWireframeInterface
     
-    var viewModel: VideoViewModel!
+    var video: Video!
     
     var currentExt: String!
     
@@ -55,7 +33,7 @@ final class DetailPresenter {
         self.wireframe = wireframe
         
         interactor.output = { [weak self] (item, error) in
-            self?.process(local: item.destinationUrl)
+            self?.process(local: item?.destinationUrl)
         }
     }
 }
@@ -66,26 +44,27 @@ extension DetailPresenter: DetailPresenterInterface {
     
     var imageURL: URL? {
         
-        URL(string: viewModel.thumbnail)
+        URL(string: video.thumbnail)
     }
     
     var numberOfRows: Int {
     
-        viewModel.streams.count
+        video.resources.count
     }
     
     func title(for row: Int) -> String {
         
-        viewModel.streams[row].resolution
+        video.resources[row].format + " " + video.resources[row].filesize
     }
     
     func download(at row: Int) {
         
-        currentExt = viewModel.streams[row].extension
+        currentExt = video.resources[row].resourceExtension
         
-        if let url = URL(string: viewModel.streams[row].url), let destenation = destinationURL(file: url) {
+        if let destenation = destinationURL(file: video.resources[row].url) {
             
-            interactor.download(DownloadItem(url, dest: destenation))
+            interactor.set(dest: destenation.path, for: video.resources[row])
+            interactor.download(video.resources[row])
         }
     }
     

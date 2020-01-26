@@ -10,7 +10,7 @@
 
 import UIKit
 import BaseViper
-import Networking
+import Core
 
 final class DetailWireframe: BaseWireframe {
 
@@ -20,13 +20,13 @@ final class DetailWireframe: BaseWireframe {
 
     // MARK: - Module setup -
 
-    init(viewModel: VideoViewModel) {
+    init(video: Video) {
         let moduleViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = DetailInteractor(service: NetworkService())
+        let interactor = DetailInteractor()
         let presenter = DetailPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
-        presenter.viewModel = viewModel
+        presenter.video = video
         moduleViewController.presenter = presenter
     }
 }
