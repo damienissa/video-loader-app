@@ -36,6 +36,8 @@
 		15951D3E23DDD2E800AEA993 /* RecentWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3823DDD2E800AEA993 /* RecentWireframe.swift */; };
 		15951D4023DDD4E300AEA993 /* String+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3F23DDD4E300AEA993 /* String+URL.swift */; };
 		15951D4223DDD69E00AEA993 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4123DDD69E00AEA993 /* TabBarViewController.swift */; };
+		15951D4923DEF86D00AEA993 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4823DEF86D00AEA993 /* ViewControllersFactory.swift */; };
+		15951D4F23DEFD8200AEA993 /* UIVideoElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4E23DEFD8200AEA993 /* UIVideoElement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		15951D3823DDD2E800AEA993 /* RecentWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentWireframe.swift; sourceTree = "<group>"; };
 		15951D3F23DDD4E300AEA993 /* String+URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+URL.swift"; sourceTree = "<group>"; };
 		15951D4123DDD69E00AEA993 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		15951D4823DEF86D00AEA993 /* ViewControllersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllersFactory.swift; sourceTree = "<group>"; };
+		15951D4E23DEFD8200AEA993 /* UIVideoElement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIVideoElement.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,10 +145,12 @@
 		1545859723DCE2E300A9F2A4 /* youtube-loader-ios */ = {
 			isa = PBXGroup;
 			children = (
+				15951D4D23DEFD7800AEA993 /* Models */,
 				15951D4623DEF33900AEA993 /* Helpers */,
 				15951CE123DD80E000AEA993 /* Modules */,
 				1545862323DD7FFD00A9F2A4 /* Resources */,
 				1545859823DCE2E300A9F2A4 /* AppDelegate.swift */,
+				15951D4823DEF86D00AEA993 /* ViewControllersFactory.swift */,
 			);
 			path = "youtube-loader-ios";
 			sourceTree = "<group>";
@@ -236,6 +242,14 @@
 				15951D1723DD976F00AEA993 /* HUD.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		15951D4D23DEFD7800AEA993 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				15951D4E23DEFD8200AEA993 /* UIVideoElement.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,6 +365,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				15951D4023DDD4E300AEA993 /* String+URL.swift in Sources */,
+				15951D4923DEF86D00AEA993 /* ViewControllersFactory.swift in Sources */,
+				15951D4F23DEFD8200AEA993 /* UIVideoElement.swift in Sources */,
 				15951D1123DD924600AEA993 /* DetailViewController.swift in Sources */,
 				15951CF923DD81E800AEA993 /* DashboardInteractor.swift in Sources */,
 				15951D3E23DDD2E800AEA993 /* RecentWireframe.swift in Sources */,

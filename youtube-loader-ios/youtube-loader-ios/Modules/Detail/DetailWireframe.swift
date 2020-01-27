@@ -20,11 +20,12 @@ final class DetailWireframe: BaseWireframe {
 
     // MARK: - Module setup -
 
-    init(video: Video) {
+    init(video: UIVideoElement) {
+    
         let moduleViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = DetailInteractor()
+        let interactor = DetailInteractor(input: EngineFactory.createEngine())
         let presenter = DetailPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         presenter.video = video
         moduleViewController.presenter = presenter
@@ -34,4 +35,36 @@ final class DetailWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension DetailWireframe: DetailWireframeInterface {
+}
+
+
+// MARK: - Adapter
+
+protocol DetailInput {
+    
+    func download(_ item: UIVideoElement.Resource, completion: ((UIVideoElement.Resource?, Error?) -> Void)!)
+    func set(dest: String, for resource: UIVideoElement.Resource)
+}
+
+extension Engine: DetailInput {
+    
+    func download(_ item: UIVideoElement.Resource, completion: ((UIVideoElement.Resource?, Error?) -> Void)!) {
+        
+        guard let object = DatabaseManager.shared.objectsForKey(Resource.self, key: "id", value: item.id).first else {
+            return completion(nil, nil)
+        }
+        
+        download(item: object) { (res, err) in
+            completion(item, err)
+        }
+    }
+    
+    func set(dest: String, for resource: UIVideoElement.Resource) {
+        
+        guard let object = DatabaseManager.shared.objectsForKey(Resource.self, key: "id", value: resource.id).first else {
+            return
+        }
+        
+        set(destenation: dest, for: object)
+    }
 }

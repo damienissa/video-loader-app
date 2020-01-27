@@ -9,25 +9,28 @@
 //
 
 import Foundation
-import Core
 
 final class DetailInteractor {
     
-    let engine = Engine()
-    var output: ((Resource?, Error?) -> Void)!
+    let service: DetailInput
+    var output: ((UIVideoElement.Resource?, Error?) -> Void)!
+    
+    init(input: DetailInput) {
+        self.service = input
+    }
 }
 
 // MARK: - Extensions -
 
 extension DetailInteractor: DetailInteractorInterface {
     
-    func download(_ item: Resource) {
+    func download(_ item: UIVideoElement.Resource) {
         
-        engine.download(item: item, completion: output)
+        service.download(item, completion: output)
     }
     
-    func set(dest: String, for resource: Resource) {
+    func set(dest: String, for resource: UIVideoElement.Resource) {
         
-        engine.set(destenation: dest, for: resource)
+        service.set(dest: dest, for: resource)
     }
 }

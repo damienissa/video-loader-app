@@ -52,7 +52,7 @@ extension RecentViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "VideoCell", for: indexPath) as! VideoCell
         let video = presenter.video(for: indexPath.row)
         cell.imageView.sd_setImage(with: video.thumbnail.url, completed: nil)
-        cell.titleLabel.text = video.name
+        cell.titleLabel.text = video.title
         
         return cell
     }
@@ -70,6 +70,6 @@ extension RecentViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        navigationController?.pushWireframe(DetailWireframe(video: presenter.video(for: indexPath.row)))
+        presenter.videoSelected(at: indexPath.row)
     }
 }

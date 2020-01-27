@@ -10,6 +10,7 @@
 
 import UIKit
 import BaseViper
+import Core
 
 final class RecentWireframe: BaseWireframe {
 
@@ -23,7 +24,7 @@ final class RecentWireframe: BaseWireframe {
         let moduleViewController = storyboard.instantiateViewController(ofType: RecentViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = RecentInteractor()
+        let interactor = RecentInteractor(provider: EngineFactory.createEngine())
         let presenter = RecentPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }
@@ -33,4 +34,27 @@ final class RecentWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension RecentWireframe: RecentWireframeInterface {
+    
+    func showDetailScreen(for video: UIVideoElement) {
+        
+        navigationController?.pushWireframe(DetailWireframe(video: video))
+    }
+}
+
+
+// MARK: - Adapter
+
+protocol ListDataProvider {
+    func listOfVideos() -> [UIVideoElement]
+}
+
+
+extension Engine: ListDataProvider {
+    
+    func listOfVideos() -> [UIVideoElement] {
+        
+        videos().map {
+            UIVideoElement(video: $0)
+        }
+    }
 }

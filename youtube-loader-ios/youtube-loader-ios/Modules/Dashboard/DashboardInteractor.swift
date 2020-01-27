@@ -9,16 +9,15 @@
 //
 
 import Foundation
-import Core
 
 final class DashboardInteractor {
 
-    var output: FetchResultBlock!
-    let engine: Engine
+    var output: ((Result<UIVideoElement, Error>) -> Void)!
+    let service: DashboardFetch
     
-    init() {
+    init(_ service: DashboardFetch) {
         
-        self.engine = Engine()
+        self.service = service
     }
 }
 
@@ -28,6 +27,6 @@ extension DashboardInteractor: DashboardInteractorInterface {
     
     func fetchData(_ url: URL) {
         
-        engine.fetchInfo(for: url, completion: output)
+        service.fetch(for: url, completion: output)
     }
 }

@@ -17,7 +17,7 @@ public final class Engine {
     fileprivate let network: NetworkingService
     fileprivate let database: DatabaseManager
     
-    public init(_ networking: NetworkingService, database: DatabaseManager = .shared) {
+    init(_ networking: NetworkingService, database: DatabaseManager = .shared) {
         
         self.network = networking
         self.database = database

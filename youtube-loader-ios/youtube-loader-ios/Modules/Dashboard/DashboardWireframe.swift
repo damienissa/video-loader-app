@@ -10,6 +10,7 @@
 
 import UIKit
 import BaseViper
+import Core
 
 final class DashboardWireframe: BaseWireframe {
     
@@ -23,7 +24,7 @@ final class DashboardWireframe: BaseWireframe {
         let moduleViewController = storyboard.instantiateViewController(ofType: DashboardViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = DashboardInteractor()
+        let interactor = DashboardInteractor(EngineFactory.createEngine())
         let presenter = DashboardPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }
@@ -33,4 +34,34 @@ final class DashboardWireframe: BaseWireframe {
 // MARK: - Extensions -
 
 extension DashboardWireframe: DashboardWireframeInterface {
+    
+    func fillLoaded(video: UIVideoElement) {
+        
+        navigationController?.pushWireframe(DetailWireframe(video: video))
+    }
+}
+
+
+// MARK: - Adapter
+
+typealias UIVideo = Video
+
+protocol DashboardFetch {
+    
+    func fetch(for url: URL, completion: @escaping (Result<UIVideoElement, Error>) -> Void)
+}
+
+extension Engine: DashboardFetch {
+    
+    func fetch(for url: URL, completion: @escaping (Result<UIVideoElement, Error>) -> Void) {
+        
+        fetchInfo(for: url) { result in
+            do {
+                let video = try result.get()
+                completion(.success(UIVideoElement(video: video)))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
 }

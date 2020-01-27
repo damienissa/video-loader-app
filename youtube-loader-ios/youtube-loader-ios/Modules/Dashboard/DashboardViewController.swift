@@ -9,7 +9,6 @@
 //
 
 import UIKit
-import Core
 
 final class DashboardViewController: UIViewController {
     
@@ -43,11 +42,10 @@ final class DashboardViewController: UIViewController {
 
 extension DashboardViewController: DashboardViewInterface {
    
-    func fill(_ video: Video) {
+    func fill() {
 
         hud?.hide()
         errorLabel.isHidden = true
-        navigationController?.pushWireframe(DetailWireframe(video: video))
     }
     
     func fill(_ error: Error) {

@@ -23,6 +23,7 @@
 		15951D2D23DDCAE300AEA993 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2C23DDCAE300AEA993 /* Video.swift */; };
 		15951D4323DEEE2000AEA993 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861923DCEBB500A9F2A4 /* Parser.swift */; };
 		15951D4523DEF05400AEA993 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4423DEF05400AEA993 /* Storage.swift */; };
+		15951D4C23DEF8BA00AEA993 /* EngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		15951D2A23DDCABE00AEA993 /* VideoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFactory.swift; sourceTree = "<group>"; };
 		15951D2C23DDCAE300AEA993 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		15951D4423DEF05400AEA993 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 				1545861923DCEBB500A9F2A4 /* Parser.swift */,
 				15951D2823DDC8A400AEA993 /* Engine.swift */,
 				15951D4423DEF05400AEA993 /* Storage.swift */,
+				15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				15951D4323DEEE2000AEA993 /* Parser.swift in Sources */,
 				15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */,
 				1545861323DCEAB600A9F2A4 /* FetchService.swift in Sources */,
+				15951D4C23DEF8BA00AEA993 /* EngineFactory.swift in Sources */,
 				15951D2923DDC8A400AEA993 /* Engine.swift in Sources */,
 				15951D4523DEF05400AEA993 /* Storage.swift in Sources */,
 			);

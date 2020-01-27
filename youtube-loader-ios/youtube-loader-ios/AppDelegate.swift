@@ -23,24 +23,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-
-struct ViewControllersFactory {
-    
-    static func searchViewController() -> UIViewController {
-        
-        let nc = UINavigationController()
-        nc.setRootWireframe(DashboardWireframe())
-        nc.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
-        
-        return nc
-    }
-    
-    static func recentViewController() -> UIViewController {
-        
-        let nc = UINavigationController()
-        nc.setRootWireframe(RecentWireframe())
-        nc.tabBarItem = UITabBarItem(tabBarSystemItem: .recents, tag: 0)
-        
-        return nc
-    }
-}
