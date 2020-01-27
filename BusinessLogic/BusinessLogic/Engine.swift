@@ -9,6 +9,25 @@
 import Foundation
 import Networking
 
+public final class Engine {
+    
+    // MARK: - Dependencies
+    
+    fileprivate let service: FetchService<Parser<FetchResponse>>
+    fileprivate let network: NetworkingService
+    fileprivate let database: DatabaseManager
+    
+    public init(_ networking: NetworkingService, database: DatabaseManager = .shared) {
+        
+        self.network = networking
+        self.database = database
+        self.service = FetchService(service: network, processor: Parser())
+    }
+}
+
+
+// MARK: - EngineInterface
+
 public typealias FetchResult = Result<Video, Error>
 public typealias FetchResultBlock = (FetchResult) -> Void
 
@@ -17,18 +36,6 @@ public protocol EngineInterface {
     func fetchInfo(for url: URL, completion: @escaping FetchResultBlock)
     func videos() -> [Video]
     func download(item: Resource, completion: @escaping (Resource?, Error?) -> Void)
-}
-
-public final class Engine {
-    
-    fileprivate let service: FetchService<Processor>
-    fileprivate let network = NetworkService()
-    fileprivate let database = DatabaseManager()
-    
-    public init() {
-        
-        self.service = FetchService(service: network, processor: Processor())
-    }
 }
 
 extension Engine: EngineInterface {

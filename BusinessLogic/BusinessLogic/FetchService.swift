@@ -12,6 +12,9 @@ public final class FetchService<Processor: ResponseProcessor> {
     
     private let processor: Processor
     private let service: NetworkingService
+    private let baseURL = "https://getvideo.p.rapidapi.com/"
+    private let apiKey = "XVUjZNU8ctmshJX55lqaZaN943fkp1oPusejsn9S4lZa198c3Q"
+    private let host = "getvideo.p.rapidapi.com"
     
     public init(service: NetworkingService, processor: Processor) {
         
@@ -27,10 +30,10 @@ public final class FetchService<Processor: ResponseProcessor> {
     
     private func createRequest(with url: URL) -> URLRequest {
         
-        var requst = URLRequest(url: URL(string: "https://getvideo.p.rapidapi.com/?url=\(url.absoluteString)")!)
+        var requst = URLRequest(url: URL(string: "\(baseURL)?url=\(url.absoluteString)")!)
         requst.allHTTPHeaderFields = [
-            "x-rapidapi-host": "getvideo.p.rapidapi.com",
-            "x-rapidapi-key": "XVUjZNU8ctmshJX55lqaZaN943fkp1oPusejsn9S4lZa198c3Q"
+            "x-rapidapi-host": host,
+            "x-rapidapi-key": apiKey
         ]
         
         requst.cachePolicy = .reloadIgnoringLocalCacheData

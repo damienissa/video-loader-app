@@ -141,11 +141,10 @@
 		1545859723DCE2E300A9F2A4 /* youtube-loader-ios */ = {
 			isa = PBXGroup;
 			children = (
-				15951D1723DD976F00AEA993 /* HUD.swift */,
+				15951D4623DEF33900AEA993 /* Helpers */,
 				15951CE123DD80E000AEA993 /* Modules */,
 				1545862323DD7FFD00A9F2A4 /* Resources */,
 				1545859823DCE2E300A9F2A4 /* AppDelegate.swift */,
-				15951D3F23DDD4E300AEA993 /* String+URL.swift */,
 			);
 			path = "youtube-loader-ios";
 			sourceTree = "<group>";
@@ -228,6 +227,15 @@
 				15951D3823DDD2E800AEA993 /* RecentWireframe.swift */,
 			);
 			path = Recent;
+			sourceTree = "<group>";
+		};
+		15951D4623DEF33900AEA993 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				15951D3F23DDD4E300AEA993 /* String+URL.swift */,
+				15951D1723DD976F00AEA993 /* HUD.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

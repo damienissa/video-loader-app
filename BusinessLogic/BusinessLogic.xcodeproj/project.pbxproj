@@ -15,13 +15,14 @@
 		1545861323DCEAB600A9F2A4 /* FetchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861223DCEAB600A9F2A4 /* FetchService.swift */; };
 		1545861623DCEB0E00A9F2A4 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861523DCEB0E00A9F2A4 /* Response.swift */; };
 		1545861823DCEB5200A9F2A4 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861723DCEB5200A9F2A4 /* Stream.swift */; };
-		1545861A23DCEBB500A9F2A4 /* Processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861923DCEBB500A9F2A4 /* Processor.swift */; };
 		1545861D23DCED2700A9F2A4 /* URLResponse+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861C23DCED2700A9F2A4 /* URLResponse+Status.swift */; };
 		15951D2123DDC78A00AEA993 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D2023DDC78A00AEA993 /* RealmSwift */; };
 		15951D2323DDC7DF00AEA993 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */; };
 		15951D2923DDC8A400AEA993 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2823DDC8A400AEA993 /* Engine.swift */; };
 		15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2A23DDCABE00AEA993 /* VideoFactory.swift */; };
 		15951D2D23DDCAE300AEA993 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2C23DDCAE300AEA993 /* Video.swift */; };
+		15951D4323DEEE2000AEA993 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861923DCEBB500A9F2A4 /* Parser.swift */; };
+		15951D4523DEF05400AEA993 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4423DEF05400AEA993 /* Storage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,12 +60,13 @@
 		1545861223DCEAB600A9F2A4 /* FetchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchService.swift; sourceTree = "<group>"; };
 		1545861523DCEB0E00A9F2A4 /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		1545861723DCEB5200A9F2A4 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
-		1545861923DCEBB500A9F2A4 /* Processor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Processor.swift; sourceTree = "<group>"; };
+		1545861923DCEBB500A9F2A4 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		1545861C23DCED2700A9F2A4 /* URLResponse+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Status.swift"; sourceTree = "<group>"; };
 		15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		15951D2823DDC8A400AEA993 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		15951D2A23DDCABE00AEA993 /* VideoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFactory.swift; sourceTree = "<group>"; };
 		15951D2C23DDCAE300AEA993 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		15951D4423DEF05400AEA993 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,8 +118,9 @@
 				154585F623DCEA7F00A9F2A4 /* BusinessLogic.h */,
 				154585F723DCEA7F00A9F2A4 /* Info.plist */,
 				1545861223DCEAB600A9F2A4 /* FetchService.swift */,
-				1545861923DCEBB500A9F2A4 /* Processor.swift */,
+				1545861923DCEBB500A9F2A4 /* Parser.swift */,
 				15951D2823DDC8A400AEA993 /* Engine.swift */,
+				15951D4423DEF05400AEA993 /* Storage.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -288,10 +291,11 @@
 				15951D2323DDC7DF00AEA993 /* DatabaseManager.swift in Sources */,
 				1545861823DCEB5200A9F2A4 /* Stream.swift in Sources */,
 				15951D2D23DDCAE300AEA993 /* Video.swift in Sources */,
+				15951D4323DEEE2000AEA993 /* Parser.swift in Sources */,
 				15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */,
-				1545861A23DCEBB500A9F2A4 /* Processor.swift in Sources */,
 				1545861323DCEAB600A9F2A4 /* FetchService.swift in Sources */,
 				15951D2923DDC8A400AEA993 /* Engine.swift in Sources */,
+				15951D4523DEF05400AEA993 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

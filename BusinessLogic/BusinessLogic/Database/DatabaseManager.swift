@@ -8,11 +8,12 @@ import RealmSwift
 fileprivate let storeFileNameDefault = "YouSaver"
 fileprivate let storeFileExtension = ".realm"
 
-class DatabaseManager: NSObject {
+public class DatabaseManager: NSObject {
+    
     
     // MARK: - Singleton
     
-    static let shared = DatabaseManager()
+    public static let shared = DatabaseManager()
     
     
     // MARK: Lifecycle
@@ -44,26 +45,26 @@ class DatabaseManager: NSObject {
     
     // MARK: Actions
     
-    func add(_ object: Object) {
+    public func add(_ object: Object) {
         write { realm in
             realm.add(object, update: .all)
         }
     }
     
-    func addArray(_ array: [Object]) {
+    public func addArray(_ array: [Object]) {
         write { realm in
             realm.add(array, update: .all)
         }
     }
     
-    func addArray<T: Object>(array: List<T>) {
+    public func addArray<T: Object>(array: List<T>) {
         
         write { realm in
             realm.add(array)
         }
     }
     
-    func change(_ changesBlock: @escaping () -> Void) {
+    public func change(_ changesBlock: @escaping () -> Void) {
         
         DispatchQueue.main.async {
             
@@ -73,19 +74,19 @@ class DatabaseManager: NSObject {
         }
     }
     
-    func delete(_ object: Object) {
+    public func delete(_ object: Object) {
         write { realm in
             realm.delete(object)
         }
     }
     
-    func deleteObjects<T: Object>(_ objects: List<T>) {
+    public func deleteObjects<T: Object>(_ objects: List<T>) {
         write { realm in
             realm.delete(objects)
         }
     }
     
-    func deleteObjects<T: Object>(_ objects: Results<T>) {
+    public func deleteObjects<T: Object>(_ objects: Results<T>) {
         write { realm in
             realm.delete(objects)
         }
@@ -103,7 +104,7 @@ class DatabaseManager: NSObject {
         }
     }
     
-    func objects<T: Object>(_ type: T.Type = T.self) -> Results<T> {
+    public func objects<T: Object>(_ type: T.Type = T.self) -> Results<T> {
         
         let realm = try! Realm()
         let results = realm.objects(T.self)
@@ -117,17 +118,17 @@ class DatabaseManager: NSObject {
 
 extension DatabaseManager {
     
-    func objectsForKey<T: Object, V>(_ type: T.Type, key: String, value: V) -> Results<T> {
+    public func objectsForKey<T: Object, V>(_ type: T.Type, key: String, value: V) -> Results<T> {
         
         return objects().filter("\(key) == %@", (value as AnyObject))
     }
     
-    func objectsForKeys<T: Object, V>(_ type: T.Type, key: String, value: V) -> Results<T> {
+    public func objectsForKeys<T: Object, V>(_ type: T.Type, key: String, value: V) -> Results<T> {
         
         return objects().filter("\(key) IN %@", (value as AnyObject))
     }
     
-    func objectForPrimaryKey<T: Object, V>(key: String, value: V) -> T? {
+    public func objectForPrimaryKey<T: Object, V>(key: String, value: V) -> T? {
         
         return objects().filter("\(key) == %@", (value as AnyObject)).first
     }

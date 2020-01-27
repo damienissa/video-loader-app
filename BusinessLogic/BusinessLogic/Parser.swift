@@ -1,5 +1,5 @@
 //
-//  Processor.swift
+//  Parser.swift
 //  BusinessLogic
 //
 //  Created by Dima Virych on 25.01.2020.
@@ -16,9 +16,9 @@ public enum ProcessingError: Error {
     case unknown
 }
 
-public class Processor: ResponseProcessor {
+public class Parser<Object>: ResponseProcessor where Object: Decodable {
     
-    public typealias ProcessingResult = Result<FetchResponse, Error>
+    public typealias ProcessingResult = Result<Object, Error>
     public init () { }
     
     public func process(_ response: Response) -> ProcessingResult {
@@ -37,13 +37,7 @@ public class Processor: ResponseProcessor {
         
         do {
             
-            let `default` = try JSONDecoder().decode(DefaultResponse.self, from: data)
-            
-            guard `default`.status else {
-                return .failure(ProcessingError.string(`default`.message))
-            }
-            
-            return .success(try JSONDecoder().decode(FetchResponse.self, from: data))
+            return .success(try JSONDecoder().decode(Object.self, from: data))
         } catch {
             return .failure(ProcessingError.default(error))
         }
