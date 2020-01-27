@@ -32,6 +32,7 @@ class HUD: UIActivityIndicatorView {
         
         stopAnimating()
         container?.removeFromSuperview()
+        container = nil
     }
     
     private func add(bgColor color: UIColor = .lightGray, on view: UIView) {

@@ -26,7 +26,9 @@ extension DetailInteractor: DetailInteractorInterface {
     
     func download(_ item: UIVideoElement.Resource) {
         
-        service.download(item, completion: output)
+        service.download(item) { [weak self] res, error in
+            self?.output(res, error)
+        }
     }
     
     func set(dest: String, for resource: UIVideoElement.Resource) {

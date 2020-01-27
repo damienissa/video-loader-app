@@ -27,6 +27,8 @@ extension DashboardInteractor: DashboardInteractorInterface {
     
     func fetchData(_ url: URL) {
         
-        service.fetch(for: url, completion: output)
+        service.fetch(for: url) { [weak self] result in
+            self?.output(result)
+        }
     }
 }
