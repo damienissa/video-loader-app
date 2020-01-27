@@ -13,7 +13,7 @@ public protocol Downloadable: class {
     
     var id: String { get }
     var url: URL { get }
-    var destinationUrl: URL? { get }
+    var destinationUrl: URL { get }
     var downloaded: Bool { get }
 }
 
@@ -120,7 +120,7 @@ class DownloadManager: NSObject {
             
             DispatchQueue.main.sync {
                 
-                return (item.destinationUrl!, [.createIntermediateDirectories])
+                return (item.destinationUrl, [.createIntermediateDirectories])
             }
         }
       
@@ -189,7 +189,7 @@ class DownloadManager: NSObject {
     
     fileprivate func remove(item: Downloadable) {
         
-        let filePath = item.destinationUrl!.path
+        let filePath = item.destinationUrl.path
         guard FileManager.default.fileExists(atPath: filePath) else {
             return
         }

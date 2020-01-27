@@ -17,6 +17,7 @@ public struct UIVideoElement {
         public let title: String
         public let `extension`: String
         public let url: String
+        public let localID: String
     }
     
     public let id: String
@@ -33,7 +34,7 @@ public struct UIVideoElement {
             Resource(id: resource.id,
                      title: resource.format + " " + resource.filesize,
                      extension: resource.resourceExtension,
-                     url: resource.urlStr)
+                     url: resource.urlStr, localID: resource.localID)
         }
     }
 }

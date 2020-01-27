@@ -33,13 +33,14 @@ public class Resource: Object, Downloadable {
     @objc dynamic public var filesize: String = ""
     @objc dynamic public var resourceExtension: String = ""
     @objc dynamic public var downloaded: Bool = false
+    @objc dynamic public var localID: String = UUID().uuidString
 
     public var url: URL {
         URL(string: urlStr)!
     }
     
-    public var destinationUrl: URL? {
-        URL(string: destinationUrlStr)
+    public var destinationUrl: URL {
+        URL(fileURLWithPath: destinationUrlStr)
     }
     
     override public class func primaryKey() -> String? {

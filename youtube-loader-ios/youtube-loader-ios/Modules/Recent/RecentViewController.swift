@@ -31,6 +31,7 @@ final class RecentViewController: UIViewController {
         super.viewWillAppear(animated)
         
         collectionView.reloadData()
+        title = "Recents"
     }
 }
 

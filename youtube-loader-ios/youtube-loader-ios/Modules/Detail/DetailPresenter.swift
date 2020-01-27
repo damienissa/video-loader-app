@@ -33,7 +33,7 @@ final class DetailPresenter {
         self.wireframe = wireframe
         
         interactor.output = { [weak self] (item, error) in
-            if let dest = self?.destinationURL() {
+            if let item = item, let dest = self?.destinationURL(item) {
                 self?.process(local: dest)
             }
         }
@@ -61,22 +61,23 @@ extension DetailPresenter: DetailPresenterInterface {
     
     func download(at row: Int) {
         
-        currentExt = video.resources[row].extension
+        let resource = video.resources[row]
+        currentExt = resource.extension
         
-        if let destenation = destinationURL() {
+        if let destenation = destinationURL(resource) {
             
-            interactor.set(dest: destenation.path, for: video.resources[row])
-            interactor.download(video.resources[row])
+            interactor.set(dest: destenation.path, for: resource)
+            interactor.download(resource)
         }
     }
     
-    func destinationURL() -> URL? {
+    func destinationURL(_ resource: UIVideoElement.Resource) -> URL? {
         
         guard let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
         }
         
-        let destinationURL = documentsDirectoryURL.appendingPathComponent(video.title).appendingPathExtension(currentExt)
+        let destinationURL = documentsDirectoryURL.appendingPathComponent((resource.localID + resource.title).addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? resource.localID).appendingPathExtension(currentExt)
         
         return destinationURL
     }

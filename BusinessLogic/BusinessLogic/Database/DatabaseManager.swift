@@ -160,7 +160,7 @@ extension DatabaseManager {
     
     static func migrate() -> Realm.Configuration {
         
-        return Realm.Configuration(schemaVersion: 1, migrationBlock: { _, _ in })
+        return Realm.Configuration(schemaVersion: 2, migrationBlock: { _, _ in })
     }
 }
 
