@@ -8,6 +8,6 @@
 
 import Foundation
 
-public enum Unknown: Error {
+public enum Unknown: Error, Equatable {
     case error
 }

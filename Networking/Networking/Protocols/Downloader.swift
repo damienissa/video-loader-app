@@ -14,19 +14,11 @@ public protocol Downloadable {
     var url: URL { get }
     var destinationUrl: URL { get }
     var downloaded: Bool { get }
+    
+    func set(destination url: URL)
 }
 
 public protocol Downloader {
     
-    func download(items: [Downloadable])
-    
-    func cancel(items: [Downloadable])
-    
-    func removeDownloaded(items: [Downloadable])
-    
-    func removeDownloaded(item: Downloadable)
-    
-    func isDownloading(item: Downloadable) -> Bool
-    
-    func downloadingProgress(forItem item: Downloadable) -> Double
+    func download(item: Downloadable, to destenationURL: URL, downloadingResult: @escaping (DownloadingResult) -> Void)
 }

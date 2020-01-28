@@ -19,6 +19,11 @@
 		15951D7323E013AD00AEA993 /* DownloaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7223E013AD00AEA993 /* DownloaderSpy.swift */; };
 		15951D7523E013F700AEA993 /* DownloadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7423E013F700AEA993 /* DownloadItem.swift */; };
 		15951D7A23E0155F00AEA993 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7923E0155F00AEA993 /* Downloader.swift */; };
+		15B3534E23E0238A008A08ED /* AlamofireSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3534D23E0238A008A08ED /* AlamofireSessionManager.swift */; };
+		15B3535023E02EF0008A08ED /* SessionSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3534F23E02EF0008A08ED /* SessionSpy.swift */; };
+		15B3535323E02FA2008A08ED /* AlamofireSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535223E02FA2008A08ED /* AlamofireSessionTest.swift */; };
+		15C5840623E01C420059AE68 /* DownloadManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5840523E01C420059AE68 /* DownloadManagerTest.swift */; };
+		15C5840923E01D480059AE68 /* XCTestCase+DownloaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5840823E01D480059AE68 /* XCTestCase+DownloaderItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +51,11 @@
 		15951D7223E013AD00AEA993 /* DownloaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderSpy.swift; sourceTree = "<group>"; };
 		15951D7423E013F700AEA993 /* DownloadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadItem.swift; sourceTree = "<group>"; };
 		15951D7923E0155F00AEA993 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
+		15B3534D23E0238A008A08ED /* AlamofireSessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireSessionManager.swift; sourceTree = "<group>"; };
+		15B3534F23E02EF0008A08ED /* SessionSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionSpy.swift; sourceTree = "<group>"; };
+		15B3535223E02FA2008A08ED /* AlamofireSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireSessionTest.swift; sourceTree = "<group>"; };
+		15C5840523E01C420059AE68 /* DownloadManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManagerTest.swift; sourceTree = "<group>"; };
+		15C5840823E01D480059AE68 /* XCTestCase+DownloaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+DownloaderItem.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +111,11 @@
 		154585D823DCE3F200A9F2A4 /* NetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
+				15B3535123E02F90008A08ED /* EndToEnd */,
+				15C5840723E01D380059AE68 /* Helpers */,
 				15951D7123E00EE400AEA993 /* DownloaderService */,
 				15951D7023E00ED800AEA993 /* NetworkingService */,
 				154585DB23DCE3F200A9F2A4 /* Info.plist */,
-				15951D7223E013AD00AEA993 /* DownloaderSpy.swift */,
-				15951D7423E013F700AEA993 /* DownloadItem.swift */,
 			);
 			path = NetworkingTests;
 			sourceTree = "<group>";
@@ -121,6 +131,7 @@
 		15951D7123E00EE400AEA993 /* DownloaderService */ = {
 			isa = PBXGroup;
 			children = (
+				15C5840523E01C420059AE68 /* DownloadManagerTest.swift */,
 			);
 			path = DownloaderService;
 			sourceTree = "<group>";
@@ -148,8 +159,28 @@
 			children = (
 				154585E523DCE41A00A9F2A4 /* NetworkService.swift */,
 				15951D1C23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift */,
+				15B3534D23E0238A008A08ED /* AlamofireSessionManager.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		15B3535123E02F90008A08ED /* EndToEnd */ = {
+			isa = PBXGroup;
+			children = (
+				15B3535223E02FA2008A08ED /* AlamofireSessionTest.swift */,
+			);
+			path = EndToEnd;
+			sourceTree = "<group>";
+		};
+		15C5840723E01D380059AE68 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				15951D7223E013AD00AEA993 /* DownloaderSpy.swift */,
+				15951D7423E013F700AEA993 /* DownloadItem.swift */,
+				15C5840823E01D480059AE68 /* XCTestCase+DownloaderItem.swift */,
+				15B3534F23E02EF0008A08ED /* SessionSpy.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,6 +304,7 @@
 				15951D7A23E0155F00AEA993 /* Downloader.swift in Sources */,
 				154585E623DCE41A00A9F2A4 /* NetworkService.swift in Sources */,
 				154585E823DCE52F00A9F2A4 /* ResponseProcessor.swift in Sources */,
+				15B3534E23E0238A008A08ED /* AlamofireSessionManager.swift in Sources */,
 				15951D1D23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,8 +314,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				154585DA23DCE3F200A9F2A4 /* NetworkingTests.swift in Sources */,
+				15B3535323E02FA2008A08ED /* AlamofireSessionTest.swift in Sources */,
 				15951D7323E013AD00AEA993 /* DownloaderSpy.swift in Sources */,
 				15951D7523E013F700AEA993 /* DownloadItem.swift in Sources */,
+				15C5840923E01D480059AE68 /* XCTestCase+DownloaderItem.swift in Sources */,
+				15C5840623E01C420059AE68 /* DownloadManagerTest.swift in Sources */,
+				15B3535023E02EF0008A08ED /* SessionSpy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

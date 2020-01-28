@@ -27,27 +27,25 @@ class NetworkingTests: XCTestCase {
     
     func test_download_method() {
         
-        let item = makeDownloadable()
+        let item = makeDownloadItem()
         let loader = DownloaderSpy()
-        makeSUT(loader).download(item: item) { _ in }
+        makeSUT(loader).download(item: item, to: SessionSpy.destenationURL) { _ in }
         
         XCTAssertEqual(loader.responsedItems as? [DownloadItem], [item])
     }
     
-    func test_didRecieve_notification() {
+    func test_didDownloadObject() {
         
-        let item = makeDownloadable()
+        let item = makeDownloadItem()
         let loader = DownloaderSpy()
         let sut = makeSUT(loader)
         let exp = expectation(description: "Wait for completion")
         var result: DownloadingResult?
         
-        sut.download(item: item) { res in
+        sut.download(item: item, to: SessionSpy.destenationURL) { res in
             result = res
             exp.fulfill()
         }
-        
-        sut.didRecieve(makeNotification(item))
         
         wait(for: [exp], timeout: 1)
         
@@ -59,22 +57,21 @@ class NetworkingTests: XCTestCase {
         }
     }
     
-    func test_didRecieve_notification_withError() {
+    func test_didDownloadObject_withError() {
         
-        let item = makeDownloadable()
+        let item = makeDownloadItem()
         let loader = DownloaderSpy()
         let startError = NSError(domain: "Some error", code: 1)
+        loader.error = startError
         let sut = makeSUT(loader)
         let exp = expectation(description: "Wait for completion")
         
         var result: DownloadingResult?
         
-        sut.download(item: item) { res in
+        sut.download(item: item, to: SessionSpy.destenationURL) { res in
             result = res
             exp.fulfill()
         }
-        
-        sut.didRecieve(makeNotification(item, info: ["error": startError]))
         
         wait(for: [exp], timeout: 1)
         
@@ -83,57 +80,6 @@ class NetworkingTests: XCTestCase {
             XCTAssertEqual(startError, error)
         default:
             XCTFail("Except failure with \(item)")
-        }
-    }
-    
-    func test_didRecieve_notification_withOutObject() {
-        
-        let item = makeDownloadable()
-        let loader = DownloaderSpy()
-        let startError = NSError(domain: "Some error", code: 1)
-        let sut = makeSUT(loader)
-        let exp = expectation(description: "Wait for completion")
-        var result: DownloadingResult?
-        
-        sut.download(item: item) { res in
-            result = res
-            exp.fulfill()
-        }
-        
-        sut.didRecieve(makeNotification(nil, info: ["error": startError]))
-        
-        wait(for: [exp], timeout: 1)
-        
-        switch result {
-        case let .failure(error as NSError):
-            XCTAssertEqual(startError, error)
-        default:
-            XCTFail("Except failure with \(item)")
-        }
-    }
-    
-    func test_didRecieve_empty_notification() {
-        
-        let item = makeDownloadable()
-        let loader = DownloaderSpy()
-        let sut = makeSUT(loader)
-        let exp = expectation(description: "Wait for completion")
-        var result: DownloadingResult?
-        
-        sut.download(item: item) { res in
-            result = res
-            exp.fulfill()
-        }
-        
-        sut.didRecieve(makeNotification(nil))
-        
-        wait(for: [exp], timeout: 1)
-        
-        switch result {
-        case let .failure(error as Unknown):
-            XCTAssertEqual(error, Unknown.error)
-        default:
-            XCTFail("Except failure with \(Unknown.error)")
         }
     }
     
@@ -142,15 +88,6 @@ class NetworkingTests: XCTestCase {
     
     private func makeSUT(_ downloader: Downloader = DownloaderSpy()) -> NetworkingService {
         NetworkService(downloader: downloader)
-    }
-    
-    private func makeDownloadable() -> DownloadItem {
-        
-        DownloadItem(id: "1", url: URL(string: "https://google.com")!, destinationUrl: URL(string: "https://google.com")!, downloaded: true)
-    }
-    
-    private func makeNotification(_ item: Downloadable?, info: [String: NSError]? = nil) -> Notification {
-        Notification(name: Notification.Name(rawValue: kDownloadManagerDidFinishDownloadingNotification), object: item, userInfo: info)
     }
     
     private func makeRequest() -> URLRequest {
