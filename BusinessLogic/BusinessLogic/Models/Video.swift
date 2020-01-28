@@ -47,11 +47,12 @@ public class Resource: Object, Downloadable {
         "id"
     }
     
-    public func set(destination url: URL) {
+    public func set(destination url: URL, completion: (() -> Void)? = nil) {
         
         DatabaseManager.shared.change { [weak self] in
             
             self?.destinationUrlStr = url.path
+            completion?()
         }
     }
 }

@@ -27,7 +27,7 @@ class DownloadItem: Downloadable, Equatable {
         return lhs.id == rhs.id
     }
     
-    func set(destination url: URL) {
+    func set(destination url: URL, completion: (() -> Void)? = nil) {
         
         destinationUrl = url
         downloaded = true

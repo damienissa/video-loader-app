@@ -10,7 +10,11 @@ import Foundation
 
 public extension URLResponse {
     
-    var status: Int {
-        (self as? HTTPURLResponse)?.statusCode ?? -1
+    var isSuccess: Bool {
+        if let code = (self as? HTTPURLResponse)?.statusCode {
+            return (200 ... 299 ~= code)
+        } else {
+            return false
+        }
     }
 }

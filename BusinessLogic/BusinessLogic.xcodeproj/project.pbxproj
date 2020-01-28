@@ -25,6 +25,7 @@
 		15951D4523DEF05400AEA993 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4423DEF05400AEA993 /* Storage.swift */; };
 		15951D4C23DEF8BA00AEA993 /* EngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */; };
 		15B3535623E04504008A08ED /* VideoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535523E04504008A08ED /* VideoTest.swift */; };
+		15B3535923E06AC8008A08ED /* ParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535823E06AC8008A08ED /* ParserTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		15951D4423DEF05400AEA993 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineFactory.swift; sourceTree = "<group>"; };
 		15B3535523E04504008A08ED /* VideoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTest.swift; sourceTree = "<group>"; };
+		15B3535823E06AC8008A08ED /* ParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 		1545860023DCEA8000A9F2A4 /* BusinessLogicTests */ = {
 			isa = PBXGroup;
 			children = (
+				15B3535723E06ABA008A08ED /* ParserTest */,
 				15B3535423E044EE008A08ED /* Video */,
 				1545860123DCEA8000A9F2A4 /* BusinessLogicTests.swift */,
 				1545860323DCEA8000A9F2A4 /* Info.plist */,
@@ -181,6 +184,14 @@
 				15B3535523E04504008A08ED /* VideoTest.swift */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		15B3535723E06ABA008A08ED /* ParserTest */ = {
+			isa = PBXGroup;
+			children = (
+				15B3535823E06AC8008A08ED /* ParserTest.swift */,
+			);
+			path = ParserTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -320,6 +331,7 @@
 			files = (
 				1545860223DCEA8000A9F2A4 /* BusinessLogicTests.swift in Sources */,
 				15B3535623E04504008A08ED /* VideoTest.swift in Sources */,
+				15B3535923E06AC8008A08ED /* ParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

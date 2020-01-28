@@ -38,7 +38,7 @@ public class DownloadManager: Downloader {
                 case .failure(let error):
                     downloadingResult(.failure(error))
                 case .success(let url):
-                    item.set(destination: url)
+                    item.set(destination: url, completion: nil)
                     downloadingResult(.success(item))
                 }
             

@@ -15,7 +15,7 @@ public protocol Downloadable {
     var destinationUrl: URL { get }
     var downloaded: Bool { get }
     
-    func set(destination url: URL)
+    func set(destination url: URL, completion: (() -> Void)?)
 }
 
 public protocol Downloader {

@@ -32,17 +32,20 @@ public struct VideoFactory {
         video.name = response.title
         video.id = response.id
         video.thumbnail = response.thumbnail
-        video.resources.append(objectsIn: response.resources.compactMap {
-            let resource = Resource()
-            resource.id = ($0.url as NSString).lastPathComponent
-            resource.urlStr = $0.url
-            resource.format = $0.format
-            resource.filesize = $0.filesizePretty
-            resource.resourceExtension = $0.streamExtension
-                        
-            return resource
-        })
+        video.resources.append(objectsIn: response.resources.compactMap(resource(from:)))
         
         return video
+    }
+    
+    public static func resource(from provider: ResourceProvider) -> Resource {
+        
+        let resource = Resource()
+        resource.id = (provider.url as NSString).lastPathComponent
+        resource.urlStr = provider.url
+        resource.format = provider.format
+        resource.filesize = provider.filesizePretty
+        resource.resourceExtension = provider.streamExtension
+                    
+        return resource
     }
 }
