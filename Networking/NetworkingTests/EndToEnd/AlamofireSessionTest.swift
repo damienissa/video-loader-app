@@ -102,9 +102,13 @@ class AlamofireSessionTest: XCTestCase {
     
     // MARK: - Helper
     
-    func makeSUT() -> DownloadSession {
+    func makeSUT(file: StaticString = #file, line: UInt = #line) -> DownloadSession {
         
-        AlamofireSessionManager()
+        let session = AlamofireSessionManager()
+        
+        trackForMemoryLeaks(session, file: file, line: line)
+        
+        return session
     }
     
     static func destenation(with name: String) -> URL {

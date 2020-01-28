@@ -78,9 +78,13 @@ class ParserTest: XCTestCase {
     
     // MARK: - Helper
     
-    func makeSUT() -> Parser<FetchResponse> {
+    func makeSUT(file: StaticString = #file, line: UInt = #line) -> Parser<FetchResponse> {
         
-        Parser()
+        let parser = Parser<FetchResponse>()
+        
+        trackForMemoryLeaks(parser, file: file, line: line)
+        
+        return parser
     }
     
     func makeResponse(_ data: Data? = nil, _ response: URLResponse? = nil, _ error: Error? = nil) -> (data: Data?, reponse: URLResponse?, error: Error?) {

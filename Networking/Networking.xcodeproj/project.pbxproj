@@ -24,6 +24,7 @@
 		15B3535323E02FA2008A08ED /* AlamofireSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535223E02FA2008A08ED /* AlamofireSessionTest.swift */; };
 		15C5840623E01C420059AE68 /* DownloadManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5840523E01C420059AE68 /* DownloadManagerTest.swift */; };
 		15C5840923E01D480059AE68 /* XCTestCase+DownloaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5840823E01D480059AE68 /* XCTestCase+DownloaderItem.swift */; };
+		15ECB1E223E0913300F30838 /* MemoryLeakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECB1E123E0913300F30838 /* MemoryLeakTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		15B3535223E02FA2008A08ED /* AlamofireSessionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireSessionTest.swift; sourceTree = "<group>"; };
 		15C5840523E01C420059AE68 /* DownloadManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManagerTest.swift; sourceTree = "<group>"; };
 		15C5840823E01D480059AE68 /* XCTestCase+DownloaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+DownloaderItem.swift"; sourceTree = "<group>"; };
+		15ECB1E123E0913300F30838 /* MemoryLeakTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryLeakTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				15951D7423E013F700AEA993 /* DownloadItem.swift */,
 				15C5840823E01D480059AE68 /* XCTestCase+DownloaderItem.swift */,
 				15B3534F23E02EF0008A08ED /* SessionSpy.swift */,
+				15ECB1E123E0913300F30838 /* MemoryLeakTracker.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				15B3535323E02FA2008A08ED /* AlamofireSessionTest.swift in Sources */,
 				15951D7323E013AD00AEA993 /* DownloaderSpy.swift in Sources */,
 				15951D7523E013F700AEA993 /* DownloadItem.swift in Sources */,
+				15ECB1E223E0913300F30838 /* MemoryLeakTracker.swift in Sources */,
 				15C5840923E01D480059AE68 /* XCTestCase+DownloaderItem.swift in Sources */,
 				15C5840623E01C420059AE68 /* DownloadManagerTest.swift in Sources */,
 				15B3535023E02EF0008A08ED /* SessionSpy.swift in Sources */,

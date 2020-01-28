@@ -113,8 +113,10 @@ class NetworkingTests: XCTestCase {
     
     // MARK: - Helper
     
-    private func makeSUT(_ downloader: Downloader = DownloaderSpy()) -> NetworkService {
-        NetworkService(downloader: downloader)
+    private func makeSUT(_ downloader: Downloader = DownloaderSpy(), file: StaticString = #file, line: UInt = #line) -> NetworkService {
+        let service = NetworkService(downloader: downloader)
+        trackForMemoryLeaks(service, file: file, line: line)
+        return service
     }
     
     private func makeRequest() -> URLRequest {

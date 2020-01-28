@@ -97,8 +97,13 @@ class DownloadManagerTest: XCTestCase {
     
     // MARK: - Helper
     
-    private func makeSUT(_ spy: DownloadSession) -> DownloadManager {
-        DownloadManager(session: spy)
+    private func makeSUT(_ spy: DownloadSession, file: StaticString = #file, line: UInt = #line) -> DownloadManager {
+        
+        let manager = DownloadManager(session: spy)
+        
+        trackForMemoryLeaks(manager, file: file, line: line)
+        
+        return manager
     }
 }
 
