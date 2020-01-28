@@ -14,8 +14,11 @@
 		154585E823DCE52F00A9F2A4 /* ResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154585E723DCE52F00A9F2A4 /* ResponseProcessor.swift */; };
 		1545861F23DD7EA600A9F2A4 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861E23DD7EA600A9F2A4 /* NetworkingService.swift */; };
 		15951D1B23DDA8E200AEA993 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D1A23DDA8E200AEA993 /* Alamofire */; };
-		15951D1D23DDAD5E00AEA993 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D1C23DDAD5E00AEA993 /* DownloadManager.swift */; };
+		15951D1D23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D1C23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift */; };
 		15951D3123DDCF8900AEA993 /* Error+Unknown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3023DDCF8900AEA993 /* Error+Unknown.swift */; };
+		15951D7323E013AD00AEA993 /* DownloaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7223E013AD00AEA993 /* DownloaderSpy.swift */; };
+		15951D7523E013F700AEA993 /* DownloadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7423E013F700AEA993 /* DownloadItem.swift */; };
+		15951D7A23E0155F00AEA993 /* Downloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7923E0155F00AEA993 /* Downloader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +41,11 @@
 		154585E523DCE41A00A9F2A4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		154585E723DCE52F00A9F2A4 /* ResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProcessor.swift; sourceTree = "<group>"; };
 		1545861E23DD7EA600A9F2A4 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
-		15951D1C23DDAD5E00AEA993 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
+		15951D1C23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireBasedDownloadManager.swift; sourceTree = "<group>"; };
 		15951D3023DDCF8900AEA993 /* Error+Unknown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Unknown.swift"; sourceTree = "<group>"; };
+		15951D7223E013AD00AEA993 /* DownloaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderSpy.swift; sourceTree = "<group>"; };
+		15951D7423E013F700AEA993 /* DownloadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadItem.swift; sourceTree = "<group>"; };
+		15951D7923E0155F00AEA993 /* Downloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Downloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,13 +89,11 @@
 		154585CD23DCE3F200A9F2A4 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				15951D3023DDCF8900AEA993 /* Error+Unknown.swift */,
+				15951D7823E0147400AEA993 /* Services */,
+				15951D7723E0146A00AEA993 /* Helpers */,
+				15951D7623E0145E00AEA993 /* Protocols */,
 				154585CE23DCE3F200A9F2A4 /* Networking.h */,
 				154585CF23DCE3F200A9F2A4 /* Info.plist */,
-				154585E523DCE41A00A9F2A4 /* NetworkService.swift */,
-				154585E723DCE52F00A9F2A4 /* ResponseProcessor.swift */,
-				1545861E23DD7EA600A9F2A4 /* NetworkingService.swift */,
-				15951D1C23DDAD5E00AEA993 /* DownloadManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -100,6 +104,8 @@
 				15951D7123E00EE400AEA993 /* DownloaderService */,
 				15951D7023E00ED800AEA993 /* NetworkingService */,
 				154585DB23DCE3F200A9F2A4 /* Info.plist */,
+				15951D7223E013AD00AEA993 /* DownloaderSpy.swift */,
+				15951D7423E013F700AEA993 /* DownloadItem.swift */,
 			);
 			path = NetworkingTests;
 			sourceTree = "<group>";
@@ -117,6 +123,33 @@
 			children = (
 			);
 			path = DownloaderService;
+			sourceTree = "<group>";
+		};
+		15951D7623E0145E00AEA993 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				154585E723DCE52F00A9F2A4 /* ResponseProcessor.swift */,
+				1545861E23DD7EA600A9F2A4 /* NetworkingService.swift */,
+				15951D7923E0155F00AEA993 /* Downloader.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		15951D7723E0146A00AEA993 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				15951D3023DDCF8900AEA993 /* Error+Unknown.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		15951D7823E0147400AEA993 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				154585E523DCE41A00A9F2A4 /* NetworkService.swift */,
+				15951D1C23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,9 +270,10 @@
 			files = (
 				1545861F23DD7EA600A9F2A4 /* NetworkingService.swift in Sources */,
 				15951D3123DDCF8900AEA993 /* Error+Unknown.swift in Sources */,
+				15951D7A23E0155F00AEA993 /* Downloader.swift in Sources */,
 				154585E623DCE41A00A9F2A4 /* NetworkService.swift in Sources */,
 				154585E823DCE52F00A9F2A4 /* ResponseProcessor.swift in Sources */,
-				15951D1D23DDAD5E00AEA993 /* DownloadManager.swift in Sources */,
+				15951D1D23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +282,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				154585DA23DCE3F200A9F2A4 /* NetworkingTests.swift in Sources */,
+				15951D7323E013AD00AEA993 /* DownloaderSpy.swift in Sources */,
+				15951D7523E013F700AEA993 /* DownloadItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

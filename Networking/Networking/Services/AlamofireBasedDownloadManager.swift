@@ -9,14 +9,6 @@
 import Foundation
 import Alamofire
 
-public protocol Downloadable {
-    
-    var id: String { get }
-    var url: URL { get }
-    var destinationUrl: URL { get }
-    var downloaded: Bool { get }
-}
-
 // MARK: - Notifications
 
 public let kDownloadManagerDidUpdateProgressNotification = "DownloadManagerDidUpdateProgressNotification"
@@ -26,84 +18,17 @@ public let kDownloadManagerDidRemoveNotification = "DownloadManagerDidRemoveNoti
 
 
 // MARK: - DownloadManaager
-public protocol Downloader {
-    
-    func download(items: [Downloadable])
-}
-class DownloadManager: NSObject, Downloader {
-    
-    static let shared = DownloadManager()
-    
+
+public final class AlamofireBasedDownloadManager: NSObject {
     
     // MARK: - Properties
-    
-    var backgroundCompletionHandler: (() -> Void)? {
-        didSet {
-            downloadManager.backgroundCompletionHandler = backgroundCompletionHandler
-        }
-    }
     
     fileprivate let downloadManager = SessionManager()
     fileprivate var queue = [Downloadable]()
     fileprivate var downloadRequests = [DownloadRequest]()
     
     
-    // MARK: - Public Actions
-    
-    func download(items: [Downloadable]) {
-        
-        var itemsToQueue = [Downloadable]()
-        for item in items {
-           
-            if item.downloaded {
-                continue
-            }
-            itemsToQueue.append(item)
-        }
-        
-        downloadManager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
-            
-            DispatchQueue.main.async {
-                
-                for item in itemsToQueue {
-                    if downloadTasks.filter({ $0.currentRequest?.url == item.url }).isEmpty {
-                        
-                        self.queue.append(item)
-                        self.download(item: item)
-                    }
-                }
-            }
-        }
-    }
-    
-    func cancel(items: [Downloadable]) {
-        
-        for item in items {
-            cancel(item: item)
-        }
-    }
-    
-    func removeDownloaded(items: [Downloadable]) {
-        
-        for item in items {
-            remove(item: item)
-        }
-    }
-    
-    func removeDownloaded(item: Downloadable) {
-        
-        remove(item: item)
-    }
-    
-    func isDownloading(item: Downloadable) -> Bool {
-        
-        return downloadRequest(forItem: item) != nil
-    }
-    
-    func downloadingProgress(forItem item: Downloadable) -> Double {
-        
-        return downloadRequest(forItem: item)?.progress.fractionCompleted ?? 0
-    }
+    // MARK: - Public Action
     
     
     // MARK: - Private Actions
@@ -126,7 +51,7 @@ class DownloadManager: NSObject, Downloader {
                 return (item.destinationUrl, [.createIntermediateDirectories])
             }
         }
-      
+        
         
         downloadRequests.append(request)
         
@@ -152,7 +77,6 @@ class DownloadManager: NSObject, Downloader {
             }
         }
     }
-    
     
     fileprivate func purgeFromQueue(item: Downloadable) {
         
@@ -211,5 +135,63 @@ class DownloadManager: NSObject, Downloader {
         return downloadRequests.first(where: { request -> Bool in
             return request.request?.url == item.url
         })
+    }
+}
+
+extension AlamofireBasedDownloadManager: Downloader {
+    
+    public func download(items: [Downloadable]) {
+        
+        var itemsToQueue = [Downloadable]()
+        for item in items {
+            
+            if item.downloaded {
+                continue
+            }
+            itemsToQueue.append(item)
+        }
+        
+        downloadManager.session.getTasksWithCompletionHandler { dataTasks, uploadTasks, downloadTasks in
+            
+            DispatchQueue.main.async {
+                
+                for item in itemsToQueue {
+                    if downloadTasks.filter({ $0.currentRequest?.url == item.url }).isEmpty {
+                        
+                        self.queue.append(item)
+                        self.download(item: item)
+                    }
+                }
+            }
+        }
+    }
+    
+    public func cancel(items: [Downloadable]) {
+        
+        for item in items {
+            cancel(item: item)
+        }
+    }
+    
+    public func removeDownloaded(items: [Downloadable]) {
+        
+        for item in items {
+            remove(item: item)
+        }
+    }
+    
+    public func removeDownloaded(item: Downloadable) {
+        
+        remove(item: item)
+    }
+    
+    public func isDownloading(item: Downloadable) -> Bool {
+        
+        return downloadRequest(forItem: item) != nil
+    }
+    
+    public func downloadingProgress(forItem item: Downloadable) -> Double {
+        
+        return downloadRequest(forItem: item)?.progress.fractionCompleted ?? 0
     }
 }

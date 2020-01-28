@@ -31,7 +31,7 @@ class NetworkingTests: XCTestCase {
         let loader = DownloaderSpy()
         makeSUT(loader).download(item: item) { _ in }
         
-        XCTAssertEqual(loader.responsedItems, [item])
+        XCTAssertEqual(loader.responsedItems as? [DownloadItem], [item])
     }
     
     func test_didRecieve_notification() {
@@ -52,7 +52,7 @@ class NetworkingTests: XCTestCase {
         wait(for: [exp], timeout: 1)
         
         switch result {
-        case let .success(responsed as D):
+        case let .success(responsed as DownloadItem):
             XCTAssertEqual(responsed, item)
         default:
             XCTFail("Except success with \(item)")
@@ -116,7 +116,6 @@ class NetworkingTests: XCTestCase {
         
         let item = makeDownloadable()
         let loader = DownloaderSpy()
-        let startError = NSError(domain: "Some error", code: 1)
         let sut = makeSUT(loader)
         let exp = expectation(description: "Wait for completion")
         var result: DownloadingResult?
@@ -145,25 +144,13 @@ class NetworkingTests: XCTestCase {
         NetworkService(downloader: downloader)
     }
     
-    private func makeDownloadable() -> D {
+    private func makeDownloadable() -> DownloadItem {
         
-        D(id: "1", url: URL(string: "https://google.com")!, destinationUrl: URL(string: "https://google.com")!, downloaded: true)
+        DownloadItem(id: "1", url: URL(string: "https://google.com")!, destinationUrl: URL(string: "https://google.com")!, downloaded: true)
     }
     
     private func makeNotification(_ item: Downloadable?, info: [String: NSError]? = nil) -> Notification {
         Notification(name: Notification.Name(rawValue: kDownloadManagerDidFinishDownloadingNotification), object: item, userInfo: info)
-    }
-    
-    struct D: Downloadable, Equatable {
-        
-        var id: String
-        var url: URL
-        var destinationUrl: URL
-        var downloaded: Bool
-        
-        static func ==(lhs: D, rhs: D) -> Bool {
-            return lhs.id == rhs.id
-        }
     }
     
     private func makeRequest() -> URLRequest {
@@ -183,16 +170,5 @@ class NetworkingTests: XCTestCase {
             
             response.data
         }
-    }
-    
-    class DownloaderSpy: Downloader {
-        
-        func download(items: [Downloadable]) {
-    
-            responsedItems.append(contentsOf: items.compactMap { $0 as? D })
-        }
-        
-        
-        var responsedItems: [D] = []
     }
 }
