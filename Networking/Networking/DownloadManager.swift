@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 
-public protocol Downloadable: class {
+public protocol Downloadable {
     
     var id: String { get }
     var url: URL { get }
@@ -19,15 +19,18 @@ public protocol Downloadable: class {
 
 // MARK: - Notifications
 
-let kDownloadManagerDidUpdateProgressNotification = "DownloadManagerDidUpdateProgressNotification"
-let kDownloadManagerDidStartDownloadingNotification = "DownloadManagerDidStartDownloadingNotification"
-let kDownloadManagerDidFinishDownloadingNotification = "DownloadManagerDidFinishDownloadingNotification"
-let kDownloadManagerDidRemoveNotification = "DownloadManagerDidRemoveNotification"
+public let kDownloadManagerDidUpdateProgressNotification = "DownloadManagerDidUpdateProgressNotification"
+public let kDownloadManagerDidStartDownloadingNotification = "DownloadManagerDidStartDownloadingNotification"
+public let kDownloadManagerDidFinishDownloadingNotification = "DownloadManagerDidFinishDownloadingNotification"
+public let kDownloadManagerDidRemoveNotification = "DownloadManagerDidRemoveNotification"
 
 
 // MARK: - DownloadManaager
-
-class DownloadManager: NSObject {
+public protocol Downloader {
+    
+    func download(items: [Downloadable])
+}
+class DownloadManager: NSObject, Downloader {
     
     static let shared = DownloadManager()
     

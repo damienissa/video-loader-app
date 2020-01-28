@@ -97,10 +97,26 @@
 		154585D823DCE3F200A9F2A4 /* NetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				154585D923DCE3F200A9F2A4 /* NetworkingTests.swift */,
+				15951D7123E00EE400AEA993 /* DownloaderService */,
+				15951D7023E00ED800AEA993 /* NetworkingService */,
 				154585DB23DCE3F200A9F2A4 /* Info.plist */,
 			);
 			path = NetworkingTests;
+			sourceTree = "<group>";
+		};
+		15951D7023E00ED800AEA993 /* NetworkingService */ = {
+			isa = PBXGroup;
+			children = (
+				154585D923DCE3F200A9F2A4 /* NetworkingTests.swift */,
+			);
+			path = NetworkingService;
+			sourceTree = "<group>";
+		};
+		15951D7123E00EE400AEA993 /* DownloaderService */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DownloaderService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

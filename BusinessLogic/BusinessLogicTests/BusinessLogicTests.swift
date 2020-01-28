@@ -7,12 +7,13 @@
 //
 
 import XCTest
-import BusinessLogic
+import Networking
+import Core
 
 class BusinessLogicTests: XCTestCase {
 
-    private func makeSUT() -> FetchService {
-        FetchService()
+    private func makeSUT() -> FetchService<Parser<FetchResponse>> {
+        FetchService(service: NetworkService(), processor: Core.Parser())
     }
     
     func test_pobratski() {

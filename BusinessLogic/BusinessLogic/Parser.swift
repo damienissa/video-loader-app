@@ -36,7 +36,6 @@ public class Parser<Object>: ResponseProcessor where Object: Decodable {
         }
         
         do {
-            
             return .success(try JSONDecoder().decode(Object.self, from: data))
         } catch {
             return .failure(ProcessingError.default(error))
