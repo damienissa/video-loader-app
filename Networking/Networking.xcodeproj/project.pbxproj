@@ -14,7 +14,7 @@
 		154585E823DCE52F00A9F2A4 /* ResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154585E723DCE52F00A9F2A4 /* ResponseProcessor.swift */; };
 		1545861F23DD7EA600A9F2A4 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861E23DD7EA600A9F2A4 /* NetworkingService.swift */; };
 		15951D1B23DDA8E200AEA993 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D1A23DDA8E200AEA993 /* Alamofire */; };
-		15951D1D23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D1C23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift */; };
+		15951D1D23DDAD5E00AEA993 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D1C23DDAD5E00AEA993 /* DownloadManager.swift */; };
 		15951D3123DDCF8900AEA993 /* Error+Unknown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3023DDCF8900AEA993 /* Error+Unknown.swift */; };
 		15951D7323E013AD00AEA993 /* DownloaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7223E013AD00AEA993 /* DownloaderSpy.swift */; };
 		15951D7523E013F700AEA993 /* DownloadItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7423E013F700AEA993 /* DownloadItem.swift */; };
@@ -46,7 +46,7 @@
 		154585E523DCE41A00A9F2A4 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		154585E723DCE52F00A9F2A4 /* ResponseProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseProcessor.swift; sourceTree = "<group>"; };
 		1545861E23DD7EA600A9F2A4 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
-		15951D1C23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireBasedDownloadManager.swift; sourceTree = "<group>"; };
+		15951D1C23DDAD5E00AEA993 /* DownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadManager.swift; sourceTree = "<group>"; };
 		15951D3023DDCF8900AEA993 /* Error+Unknown.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Error+Unknown.swift"; sourceTree = "<group>"; };
 		15951D7223E013AD00AEA993 /* DownloaderSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloaderSpy.swift; sourceTree = "<group>"; };
 		15951D7423E013F700AEA993 /* DownloadItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadItem.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				154585E523DCE41A00A9F2A4 /* NetworkService.swift */,
-				15951D1C23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift */,
+				15951D1C23DDAD5E00AEA993 /* DownloadManager.swift */,
 				15B3534D23E0238A008A08ED /* AlamofireSessionManager.swift */,
 			);
 			path = Services;
@@ -305,7 +305,7 @@
 				154585E623DCE41A00A9F2A4 /* NetworkService.swift in Sources */,
 				154585E823DCE52F00A9F2A4 /* ResponseProcessor.swift in Sources */,
 				15B3534E23E0238A008A08ED /* AlamofireSessionManager.swift in Sources */,
-				15951D1D23DDAD5E00AEA993 /* AlamofireBasedDownloadManager.swift in Sources */,
+				15951D1D23DDAD5E00AEA993 /* DownloadManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

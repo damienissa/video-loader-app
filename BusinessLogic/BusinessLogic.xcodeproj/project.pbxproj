@@ -24,6 +24,7 @@
 		15951D4323DEEE2000AEA993 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861923DCEBB500A9F2A4 /* Parser.swift */; };
 		15951D4523DEF05400AEA993 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4423DEF05400AEA993 /* Storage.swift */; };
 		15951D4C23DEF8BA00AEA993 /* EngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */; };
+		15B3535623E04504008A08ED /* VideoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535523E04504008A08ED /* VideoTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 		15951D2C23DDCAE300AEA993 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		15951D4423DEF05400AEA993 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineFactory.swift; sourceTree = "<group>"; };
+		15B3535523E04504008A08ED /* VideoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		1545860023DCEA8000A9F2A4 /* BusinessLogicTests */ = {
 			isa = PBXGroup;
 			children = (
+				15B3535423E044EE008A08ED /* Video */,
 				1545860123DCEA8000A9F2A4 /* BusinessLogicTests.swift */,
 				1545860323DCEA8000A9F2A4 /* Info.plist */,
 			);
@@ -170,6 +173,14 @@
 				15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */,
 			);
 			path = Database;
+			sourceTree = "<group>";
+		};
+		15B3535423E044EE008A08ED /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				15B3535523E04504008A08ED /* VideoTest.swift */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1545860223DCEA8000A9F2A4 /* BusinessLogicTests.swift in Sources */,
+				15B3535623E04504008A08ED /* VideoTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

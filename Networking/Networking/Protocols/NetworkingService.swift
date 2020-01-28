@@ -9,10 +9,14 @@
 import Foundation
 
 public typealias DownloadingResult = Result<Downloadable, Error>
+public typealias DownloadProgress = (Int) -> Void
 public protocol NetworkingService {
    
     func execute<Processor: ResponseProcessor>(_ request: URLRequest,
                                                processor: Processor,
                                                completion: @escaping (Processor.ProcessingResult) -> Void)
-    func download(item: Downloadable, to destenationURL: URL, completion: @escaping (DownloadingResult) -> Void)
+    func download(item: Downloadable,
+                  to destenationURL: URL,
+                  with progress: DownloadProgress?,
+                  completion: @escaping (DownloadingResult) -> Void)
 }

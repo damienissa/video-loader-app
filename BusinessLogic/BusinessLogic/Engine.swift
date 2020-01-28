@@ -28,19 +28,21 @@ public final class Engine {
 
 // MARK: - EngineInterface
 
-public typealias FetchResult = Result<Video, Error>
-public typealias FetchResultBlock = (FetchResult) -> Void
+public typealias EngineFetchResult = Result<Video, Error>
+public typealias EngineFetchResultBlock = (EngineFetchResult) -> Void
+public typealias EngineDownloadResult = Result<Resource, Error>
+public typealias EngineDownloadResultBlock = (Result<Resource, Error>) -> Void
 
 public protocol EngineInterface {
     
-    func fetchInfo(for url: URL, completion: @escaping FetchResultBlock)
+    func fetchInfo(for url: URL, completion: @escaping EngineFetchResultBlock)
     func videos() -> [Video]
-    func download(item: Resource, completion: @escaping (Resource?, Error?) -> Void)
+    func download(item: Resource, completion: @escaping EngineDownloadResultBlock)
 }
 
 extension Engine: EngineInterface {
     
-    public func fetchInfo(for url: URL, completion: @escaping FetchResultBlock) {
+    public func fetchInfo(for url: URL, completion: @escaping EngineFetchResultBlock) {
         
         service.fetch(for: url) { [weak self] result in
             
@@ -64,10 +66,18 @@ extension Engine: EngineInterface {
         database.objects(Video.self).array
     }
     
-    public func download(item: Resource, completion: @escaping (Resource?, Error?) -> Void) {
+    public func download(item: Resource, completion: @escaping EngineDownloadResultBlock) {
         
-        network.download(item: item) { (res, err) in
-            completion(res as? Resource, err)
+        network.download(item: item, to: item.destinationUrl, with: nil) { result in
+            
+            switch result {
+            case .success(let item as Resource):
+                completion(.success(item))
+            case .failure(let error):
+                completion(.failure(error))
+            default:
+                completion(.failure(Unknown.error))
+            }
         }
     }
     
@@ -87,5 +97,15 @@ fileprivate extension Engine {
     func saveResponse(_ video: Video) {
                 
         database.add(video)
+    }
+}
+
+extension Stream: ResourceProvider {
+    
+}
+
+extension FetchResponse: VideoProvider {
+    public var resources: [ResourceProvider] {
+        streams
     }
 }

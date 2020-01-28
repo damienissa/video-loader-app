@@ -28,7 +28,7 @@ public class DownloadManager: Downloader {
         self.session = session
     }
     
-    public func download(item: Downloadable, to destenationURL: URL, downloadingResult: @escaping (DownloadingResult) -> Void) {
+    public func download(item: Downloadable, to destenationURL: URL, progress: DownloadProgress? = nil, downloadingResult: @escaping (DownloadingResult) -> Void) {
         
         session.startDownload(item: item.url, to: destenationURL) { sessionResult in
             
@@ -42,7 +42,8 @@ public class DownloadManager: Downloader {
                     downloadingResult(.success(item))
                 }
             
-            case .progress(_): break
+            case .progress(let prog):
+                progress?(prog)
             }
         }
     }

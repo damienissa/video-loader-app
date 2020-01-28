@@ -20,5 +20,5 @@ public protocol Downloadable {
 
 public protocol Downloader {
     
-    func download(item: Downloadable, to destenationURL: URL, downloadingResult: @escaping (DownloadingResult) -> Void)
+    func download(item: Downloadable, to destenationURL: URL, progress: DownloadProgress?, downloadingResult: @escaping (DownloadingResult) -> Void)
 }

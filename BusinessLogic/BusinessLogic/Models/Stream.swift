@@ -7,6 +7,7 @@
 //
 
 public struct Stream: Codable {
+    
     public let url: String
     public let format, formatNote: String
     public let streamExtension: String

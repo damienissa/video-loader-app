@@ -34,6 +34,33 @@ class NetworkingTests: XCTestCase {
         XCTAssertEqual(loader.responsedItems as? [DownloadItem], [item])
     }
     
+    func test_didDownloadObject_withProgress() {
+        
+        let item = makeDownloadItem()
+        let loader = DownloaderSpy()
+        let sut = makeSUT(loader)
+        let exp = expectation(description: "Wait for completion")
+        var result: DownloadingResult?
+        
+        sut.download(item: item, to: SessionSpy.destenationURL, with: {
+            progress in
+            
+            XCTAssertEqual(progress, 100)
+        }) { res in
+            result = res
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1)
+        
+        switch result {
+        case let .success(responsed as DownloadItem):
+            XCTAssertEqual(responsed, item)
+        default:
+            XCTFail("Except success with \(item)")
+        }
+    }
+    
     func test_didDownloadObject() {
         
         let item = makeDownloadItem()
@@ -86,7 +113,7 @@ class NetworkingTests: XCTestCase {
     
     // MARK: - Helper
     
-    private func makeSUT(_ downloader: Downloader = DownloaderSpy()) -> NetworkingService {
+    private func makeSUT(_ downloader: Downloader = DownloaderSpy()) -> NetworkService {
         NetworkService(downloader: downloader)
     }
     

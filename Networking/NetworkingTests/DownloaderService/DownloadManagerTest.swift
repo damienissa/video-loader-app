@@ -68,10 +68,36 @@ class DownloadManagerTest: XCTestCase {
         wait(for: [exp], timeout: 1)
     }
     
+    func testProgress() {
+        
+        let item = makeDownloadItem()
+        let sut = makeSUT(SessionSpy())
+        let exp = expectation(description: "Wait for completion")
+        var result: DownloadingResult?
+        
+        sut.download(item: item, to: SessionSpy.destenationURL, progress: {
+            progress in
+            
+            XCTAssertEqual(progress, 100)
+        }) { res in
+            result = res
+            exp.fulfill()
+        }
+        
+        wait(for: [exp], timeout: 1)
+        
+        switch result {
+        case let .success(responsed as DownloadItem):
+            XCTAssertEqual(responsed, item)
+        default:
+            XCTFail("Except success with \(item)")
+        }
+    }
+    
     
     // MARK: - Helper
     
-    private func makeSUT(_ spy: DownloadSession) -> Downloader {
+    private func makeSUT(_ spy: DownloadSession) -> DownloadManager {
         DownloadManager(session: spy)
     }
 }

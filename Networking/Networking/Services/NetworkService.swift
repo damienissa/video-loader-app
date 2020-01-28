@@ -16,22 +16,27 @@ public final class NetworkService: NetworkingService {
     
     // MARK: - Init
     
-    public init(session: URLSession = .shared, downloader: Downloader) {
+    public init(session: URLSession = .shared, downloader: Downloader = DownloadManager(session: AlamofireSessionManager())) {
         
         self.manager = downloader
         self.session = session
     }
     
-    public func execute<Processor: ResponseProcessor>(_ request: URLRequest, processor: Processor, completion: @escaping (Processor.ProcessingResult) -> Void) {
+    public func execute<Processor: ResponseProcessor>(_ request: URLRequest,
+                                                      processor: Processor,
+                                                      completion: @escaping (Processor.ProcessingResult) -> Void) {
         
         session.dataTask(with: request) { (d, r, e) in
             completion(processor.process((d, r, e)))
         }.resume()
     }
     
-    public func download(item: Downloadable, to destenationURL: URL, completion: @escaping (DownloadingResult) -> Void) {
+    public func download(item: Downloadable,
+                         to destenationURL: URL,
+                         with progress: DownloadProgress? = nil,
+                         completion: @escaping (DownloadingResult) -> Void) {
         
-        manager.download(item: item, to: destenationURL, downloadingResult: completion)
+        manager.download(item: item, to: destenationURL, progress: progress, downloadingResult: completion)
     }
 }
 

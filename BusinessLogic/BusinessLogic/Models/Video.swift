@@ -25,7 +25,7 @@ public class Video: Object {
 
 
 public class Resource: Object, Downloadable {
-    
+   
     @objc dynamic public var id: String = ""
     @objc dynamic public var urlStr: String = ""
     @objc dynamic public var destinationUrlStr: String = ""
@@ -45,5 +45,13 @@ public class Resource: Object, Downloadable {
     
     override public class func primaryKey() -> String? {
         "id"
+    }
+    
+    public func set(destination url: URL) {
+        
+        DatabaseManager.shared.change { [weak self] in
+            
+            self?.destinationUrlStr = url.path
+        }
     }
 }

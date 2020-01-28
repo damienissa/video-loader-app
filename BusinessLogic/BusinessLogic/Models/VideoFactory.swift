@@ -8,15 +8,31 @@
 
 import Foundation
 
-struct VideoFactory {
+public protocol ResourceProvider {
     
-    static func video(from response: FetchResponse) -> Video {
+    var url: String { get }
+    var format: String { get }
+    var filesizePretty: String { get }
+    var streamExtension: String { get }
+}
+
+public protocol VideoProvider {
+    
+    var title: String { get }
+    var id: String { get }
+    var thumbnail: String { get }
+    var resources: [ResourceProvider] { get }
+}
+
+public struct VideoFactory {
+    
+    public static func video(from response: VideoProvider) -> Video {
         
         let video = Video()
         video.name = response.title
         video.id = response.id
         video.thumbnail = response.thumbnail
-        video.resources.append(objectsIn: response.streams.compactMap {
+        video.resources.append(objectsIn: response.resources.compactMap {
             let resource = Resource()
             resource.id = ($0.url as NSString).lastPathComponent
             resource.urlStr = $0.url
