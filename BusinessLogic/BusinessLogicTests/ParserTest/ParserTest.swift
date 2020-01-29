@@ -128,7 +128,7 @@ class ParserTest: XCTestCase {
 }
 
 
-fileprivate let respString = """
+let respString = """
 {
     "status": true,
     "message": "Successfully received info.",

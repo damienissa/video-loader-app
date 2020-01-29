@@ -37,14 +37,15 @@ public protocol EngineInterface {
     
     func fetchInfo(for url: URL, completion: @escaping EngineFetchResultBlock)
     func videos() -> [Video]
-    func download(item: Resource, completion: @escaping EngineDownloadResultBlock)
+    func download(item: Downloadable, completion: @escaping EngineDownloadResultBlock)
+    func set(destenation: String, for resource: Downloadable)
 }
 
 extension Engine: EngineInterface {
     
     public func fetchInfo(for url: URL, completion: @escaping EngineFetchResultBlock) {
         
-        service.fetch(for: url) { [weak self] result in
+       return service.fetch(for: url) { [weak self] result in
             
             guard let strSelf = self else {
                 return completion(.failure(Unknown.error))
@@ -66,7 +67,7 @@ extension Engine: EngineInterface {
         Array(database.objects(Video.self))
     }
     
-    public func download(item: Resource, completion: @escaping EngineDownloadResultBlock) {
+    public func download(item: Downloadable, completion: @escaping EngineDownloadResultBlock) {
         
         network.download(item: item, to: item.destinationUrl, with: nil) { result in
             
@@ -81,11 +82,11 @@ extension Engine: EngineInterface {
         }
     }
     
-    public func set(destenation: String, for resource: Resource) {
+    public func set(destenation: String, for resource: Downloadable) {
         
         database.change {
             
-            resource.destinationUrlStr = destenation
+            resource.destinationUrl = URL(fileURLWithPath: destenation)
         }
     }
 }

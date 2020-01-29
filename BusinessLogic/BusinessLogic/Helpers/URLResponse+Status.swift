@@ -11,10 +11,15 @@ import Foundation
 public extension URLResponse {
     
     var isSuccess: Bool {
-        if let code = (self as? HTTPURLResponse)?.statusCode {
-            return (200 ... 299 ~= code)
-        } else {
+        isValid(code: (self as? HTTPURLResponse)?.statusCode)
+    }
+    
+    private func isValid(code: Int?) -> Bool {
+        
+        guard let code = code else {
             return false
         }
+        
+        return 200 ... 299 ~= code
     }
 }
