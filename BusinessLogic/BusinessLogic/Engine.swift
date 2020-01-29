@@ -15,9 +15,9 @@ public final class Engine {
     
     fileprivate let service: FetchService<Parser<FetchResponse>>
     fileprivate let network: NetworkingService
-    fileprivate let database: DatabaseManager
+    fileprivate let database: Storage
     
-    init(_ networking: NetworkingService, database: DatabaseManager = .shared) {
+    init(_ networking: NetworkingService, database: Storage) {
         
         self.network = networking
         self.database = database
@@ -63,7 +63,7 @@ extension Engine: EngineInterface {
     
     public func videos() -> [Video] {
         
-        database.objects(Video.self).array
+        Array(database.objects(Video.self))
     }
     
     public func download(item: Resource, completion: @escaping EngineDownloadResultBlock) {

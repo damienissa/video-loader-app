@@ -40,11 +40,13 @@ class ParserTest: XCTestCase {
     
     func test_process_wrong_status_response() {
         
-        let result = makeSUT().process(makeResponse(Data("{}".utf8), makeURLResponse(status: 300)))
+        let code = 300
+        let result = makeSUT().process(makeResponse(Data("{}".utf8), makeURLResponse(status: code)))
         
         switch result {
         case .failure(let error as ProcessingError):
-            XCTAssertEqual(error, ProcessingError.statusCode(300))
+            XCTAssertEqual(error, ProcessingError.statusCode(code))
+            XCTAssertEqual(error.localizedDescription, "\(code)")
         default:
             XCTFail("Excepted error, \(result)")
         }
@@ -75,6 +77,30 @@ class ParserTest: XCTestCase {
         }
     }
     
+    func test_process_with_emptyData_noError() {
+        
+        let result = makeSUT().process(makeResponse(nil, makeURLResponse(status: 200), nil))
+        
+        switch result {
+        case .failure(let err as ProcessingError):
+            XCTAssertEqual(err, ProcessingError.unknown, "\(err)")
+        default:
+            XCTFail("Excepted error, \(result)")
+        }
+    }
+    
+    func test_responseWithNoStatus() {
+        
+        let result = makeSUT().process(makeResponse(nil, makeURLResponse(), nil))
+        
+        switch result {
+        case .failure(let err as ProcessingError):
+            XCTAssertEqual(err, ProcessingError.statusCode(-1), "\(err)")
+        default:
+            XCTFail("Excepted error, \(result)")
+        }
+    }
+    
     
     // MARK: - Helper
     
@@ -91,9 +117,13 @@ class ParserTest: XCTestCase {
         (data, response, error)
     }
     
-    func makeURLResponse(_ url: URL = URL(string: "http://a-url.com")!, status: Int) -> URLResponse {
+    func makeURLResponse(_ url: URL = URL(string: "http://a-url.com")!, status: Int? = nil) -> URLResponse {
         
-        HTTPURLResponse(url: url, statusCode: status, httpVersion: nil, headerFields: nil)!
+        if let status = status {
+            return HTTPURLResponse(url: url, statusCode: status, httpVersion: nil, headerFields: nil)!
+        } else {
+            return URLResponse()
+        }
     }
 }
 

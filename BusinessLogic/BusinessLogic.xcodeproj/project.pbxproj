@@ -16,13 +16,16 @@
 		1545861623DCEB0E00A9F2A4 /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861523DCEB0E00A9F2A4 /* Response.swift */; };
 		1545861823DCEB5200A9F2A4 /* Stream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861723DCEB5200A9F2A4 /* Stream.swift */; };
 		1545861D23DCED2700A9F2A4 /* URLResponse+Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861C23DCED2700A9F2A4 /* URLResponse+Status.swift */; };
+		155B28B723E19706004C7706 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B28B623E19706004C7706 /* Store.swift */; };
+		155B28B923E1A2E3004C7706 /* EngineFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B28B823E1A2E3004C7706 /* EngineFactoryTest.swift */; };
+		155B28BB23E1A3B4004C7706 /* FetchServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B28BA23E1A3B4004C7706 /* FetchServiceTest.swift */; };
+		155B28BD23E1AA96004C7706 /* EngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B28BC23E1AA96004C7706 /* EngineTest.swift */; };
 		15951D2123DDC78A00AEA993 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D2023DDC78A00AEA993 /* RealmSwift */; };
 		15951D2323DDC7DF00AEA993 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */; };
 		15951D2923DDC8A400AEA993 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2823DDC8A400AEA993 /* Engine.swift */; };
 		15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2A23DDCABE00AEA993 /* VideoFactory.swift */; };
 		15951D2D23DDCAE300AEA993 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2C23DDCAE300AEA993 /* Video.swift */; };
 		15951D4323DEEE2000AEA993 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861923DCEBB500A9F2A4 /* Parser.swift */; };
-		15951D4523DEF05400AEA993 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4423DEF05400AEA993 /* Storage.swift */; };
 		15951D4C23DEF8BA00AEA993 /* EngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */; };
 		15B3535623E04504008A08ED /* VideoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535523E04504008A08ED /* VideoTest.swift */; };
 		15B3535923E06AC8008A08ED /* ParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535823E06AC8008A08ED /* ParserTest.swift */; };
@@ -66,11 +69,14 @@
 		1545861723DCEB5200A9F2A4 /* Stream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stream.swift; sourceTree = "<group>"; };
 		1545861923DCEBB500A9F2A4 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		1545861C23DCED2700A9F2A4 /* URLResponse+Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLResponse+Status.swift"; sourceTree = "<group>"; };
+		155B28B623E19706004C7706 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		155B28B823E1A2E3004C7706 /* EngineFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineFactoryTest.swift; sourceTree = "<group>"; };
+		155B28BA23E1A3B4004C7706 /* FetchServiceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchServiceTest.swift; sourceTree = "<group>"; };
+		155B28BC23E1AA96004C7706 /* EngineTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineTest.swift; sourceTree = "<group>"; };
 		15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		15951D2823DDC8A400AEA993 /* Engine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Engine.swift; sourceTree = "<group>"; };
 		15951D2A23DDCABE00AEA993 /* VideoFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFactory.swift; sourceTree = "<group>"; };
 		15951D2C23DDCAE300AEA993 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
-		15951D4423DEF05400AEA993 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EngineFactory.swift; sourceTree = "<group>"; };
 		15B3535523E04504008A08ED /* VideoTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTest.swift; sourceTree = "<group>"; };
 		15B3535823E06AC8008A08ED /* ParserTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTest.swift; sourceTree = "<group>"; };
@@ -128,8 +134,8 @@
 				1545861223DCEAB600A9F2A4 /* FetchService.swift */,
 				1545861923DCEBB500A9F2A4 /* Parser.swift */,
 				15951D2823DDC8A400AEA993 /* Engine.swift */,
-				15951D4423DEF05400AEA993 /* Storage.swift */,
 				15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */,
+				155B28B623E19706004C7706 /* Store.swift */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -142,6 +148,9 @@
 				15B3535423E044EE008A08ED /* Video */,
 				1545860123DCEA8000A9F2A4 /* BusinessLogicTests.swift */,
 				1545860323DCEA8000A9F2A4 /* Info.plist */,
+				155B28B823E1A2E3004C7706 /* EngineFactoryTest.swift */,
+				155B28BA23E1A3B4004C7706 /* FetchServiceTest.swift */,
+				155B28BC23E1AA96004C7706 /* EngineTest.swift */,
 			);
 			path = BusinessLogicTests;
 			sourceTree = "<group>";
@@ -320,11 +329,11 @@
 				1545861823DCEB5200A9F2A4 /* Stream.swift in Sources */,
 				15951D2D23DDCAE300AEA993 /* Video.swift in Sources */,
 				15951D4323DEEE2000AEA993 /* Parser.swift in Sources */,
+				155B28B723E19706004C7706 /* Store.swift in Sources */,
 				15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */,
 				1545861323DCEAB600A9F2A4 /* FetchService.swift in Sources */,
 				15951D4C23DEF8BA00AEA993 /* EngineFactory.swift in Sources */,
 				15951D2923DDC8A400AEA993 /* Engine.swift in Sources */,
-				15951D4523DEF05400AEA993 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +343,10 @@
 			files = (
 				15ECB1E423E0923200F30838 /* MemoryLeakTracker.swift in Sources */,
 				1545860223DCEA8000A9F2A4 /* BusinessLogicTests.swift in Sources */,
+				155B28BB23E1A3B4004C7706 /* FetchServiceTest.swift in Sources */,
 				15B3535623E04504008A08ED /* VideoTest.swift in Sources */,
+				155B28BD23E1AA96004C7706 /* EngineTest.swift in Sources */,
+				155B28B923E1A2E3004C7706 /* EngineFactoryTest.swift in Sources */,
 				15B3535923E06AC8008A08ED /* ParserTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

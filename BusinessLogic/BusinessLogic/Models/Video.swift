@@ -40,19 +40,16 @@ public class Resource: Object, Downloadable {
     }
     
     public var destinationUrl: URL {
-        URL(fileURLWithPath: destinationUrlStr)
+        set {
+            destinationUrlStr = newValue.path
+        }
+        
+        get {
+            URL(fileURLWithPath: destinationUrlStr)
+        }
     }
     
     override public class func primaryKey() -> String? {
         "id"
-    }
-    
-    public func set(destination url: URL, completion: (() -> Void)? = nil) {
-        
-        DatabaseManager.shared.change { [weak self] in
-            
-            self?.destinationUrlStr = url.path
-            completion?()
-        }
     }
 }

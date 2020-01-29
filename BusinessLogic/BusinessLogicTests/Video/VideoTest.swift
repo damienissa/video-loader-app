@@ -64,12 +64,9 @@ class VideoTest: XCTestCase {
         let sut = VideoFactory.resource(from: resource)
         let url = destenation(with: UUID().uuidString)
         let exp = expectation(description: "Wait for setting")
-        
-        sut.set(destination: url) {
-            
-            XCTAssertEqual(sut.destinationUrl, url)
-            exp.fulfill()
-        }
+        sut.destinationUrl = url
+        XCTAssertEqual(sut.destinationUrl, url)
+        exp.fulfill()
         
         wait(for: [exp], timeout: 1)
     }

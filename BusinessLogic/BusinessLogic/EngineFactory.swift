@@ -10,8 +10,8 @@ import Networking
 
 public struct EngineFactory {
     
-    public static func createEngine() -> Engine {
+    public static func createEngine(network: NetworkingService = NetworkService(), store: Storage = DatabaseManager()) -> Engine {
         
-        Engine(NetworkService(), database: DatabaseManager.shared)
+        Engine(network, database: store)
     }
 }

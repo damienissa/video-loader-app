@@ -14,10 +14,8 @@ public enum ProcessingError: Error, Equatable {
         lhs.localizedDescription == rhs.localizedDescription
     }
     
-    
     case `default`(Error)
-    case statusCode(Int?)
-    case string(String)
+    case statusCode(Int)
     case unknown
     
     public var localizedDescription: String {
@@ -26,12 +24,9 @@ public enum ProcessingError: Error, Equatable {
         case .default(let error):
             return error.localizedDescription
         case .statusCode(let status):
-        return "\(status ?? -1)"
-        case .string(let message):
-        return message
+            return "\(status)"
         case .unknown:
-        return "\(self)"
-        
+            return "\(self)"
         }
     }
 }
@@ -44,7 +39,7 @@ public class Parser<Object>: ResponseProcessor where Object: Decodable {
     public func process(_ response: Response) -> ProcessingResult {
         
         if !(response.reponse?.isSuccess ?? false) {
-            return .failure(ProcessingError.statusCode((response.reponse as? HTTPURLResponse)?.statusCode))
+            return .failure(ProcessingError.statusCode((response.reponse as? HTTPURLResponse)?.statusCode ?? -1))
         }
         
         if let error = response.error {

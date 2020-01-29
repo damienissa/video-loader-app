@@ -8,14 +8,12 @@
 
 import Foundation
 
-public protocol Downloadable {
+public protocol Downloadable: class {
     
     var id: String { get }
     var url: URL { get }
-    var destinationUrl: URL { get }
+    var destinationUrl: URL { get set }
     var downloaded: Bool { get }
-    
-    func set(destination url: URL, completion: (() -> Void)?)
 }
 
 public protocol Downloader {
