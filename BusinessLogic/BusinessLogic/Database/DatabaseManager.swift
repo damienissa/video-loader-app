@@ -3,18 +3,29 @@ import Foundation
 import RealmSwift
 
 
+public typealias Realm = RealmSwift.Realm
+
 // MARK: - Properties
 
-extension Video: StorageObject {
+public protocol RealmLike {
     
+    typealias Object = RealmSwift.Object
+    typealias UpdatePolicy = RealmSwift.Realm.UpdatePolicy
+    typealias NotificationToken = RealmSwift.NotificationToken
+    typealias Results<Object: RealmCollectionValue> = RealmSwift.Results<Object>
+    
+    func add(_ object: Object, update: UpdatePolicy)
+    func delete(_ object: Object)
+    func objects<Element: Object>(_ type: Element.Type) -> Results<Element>
+    func write(withoutNotifying tokens: [NotificationToken], _ block: (() throws -> Void)) throws
 }
 
-extension Resource: StorageObject {
-    
-}
+extension Realm: RealmLike { }
+extension Video: StorageObject { }
+extension Resource: StorageObject { }
 
 extension DatabaseManager: Storage {
-    
+   
     public func add(_ object: StorageObject) {
         
         if let db = object as? Object {
@@ -29,9 +40,9 @@ extension DatabaseManager: Storage {
         }
     }
     
-    public func objects<T>(_: T.Type) -> [T] where T : StorageObject {
+    public func getObjects<T>(_ type: T.Type) -> [T] where T : StorageObject {
         
-        objects() as! [T]
+        Array(objects(String(describing: type))) as! [T]
     }
 }
 
@@ -39,12 +50,20 @@ public final class DatabaseManager {
     
     private let thread = DispatchQueue(label: "DatabaseManager.Realm")
     
+    public static func realm() -> DatabaseManager {
+        
+        Realm.Configuration.defaultConfiguration = DatabaseManager.migrate()
+        
+        return DatabaseManager(try! Realm())
+    }
+    
     
     // MARK: Lifecycle
     
-    public init() {
-        
-        Realm.Configuration.defaultConfiguration = DatabaseManager.migrate()
+    var store: RealmLike
+    
+    public init(_ store: RealmLike) {
+        self.store = store
     }
     
     
@@ -69,28 +88,27 @@ public final class DatabaseManager {
         }
     }
     
-    public func objects<T: Object>(_ type: T.Type = T.self) -> [T] {
+    public func objects<T: Object>(_ type: String) -> Results<T> {
         
-        let realm = try! Realm()
-        let results = realm.objects(T.self)
+        let results = store.objects(class_for(type)!)
         
-        return Array(results)
+        return results as! Results<T>
     }
     
-    fileprivate func write(_ changes: @escaping (Realm) -> Void) {
+    fileprivate func write(_ changes: @escaping (RealmLike) -> Void) {
         
         thread.async {
             autoreleasepool {
-                let realm = try! Realm()
-                do {
-                    try realm.write {
-                        changes(realm)
-                    }
-                } catch let error as NSError {
-                    NSLog(error.description)
+                
+                try? self.store.write(withoutNotifying: []) {
+                    changes(self.store)
                 }
             }
         }
+    }
+    
+    private func class_for<T: Object>(_ name: String) -> T.Type? {
+        NSClassFromString("Core." + name) as? T.Type
     }
 }
 
@@ -99,8 +117,8 @@ public final class DatabaseManager {
 
 extension DatabaseManager {
     
-    static func migrate() -> Realm.Configuration {
+    public static func migrate() -> Realm.Configuration {
         
-        return Realm.Configuration(schemaVersion: 2, migrationBlock: { _, _ in })
+        Realm.Configuration(schemaVersion: 2)
     }
 }

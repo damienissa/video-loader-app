@@ -15,7 +15,7 @@ public protocol Storage {
     
     func add(_: StorageObject)
     func delete(_: StorageObject)
-    func objects<T: StorageObject>(_: T.Type) -> [T]
+    func getObjects<T: StorageObject>(_: T.Type) -> [T]
     
     func change(_: @escaping () -> Void)
 }

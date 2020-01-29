@@ -273,7 +273,7 @@ class EngineTest: XCTestCase {
             
         }
         
-        func objects<T>(_: T.Type) -> [T] where T : StorageObject {
+        func getObjects<T>(_: T.Type) -> [T] where T : StorageObject {
             []
         }
         

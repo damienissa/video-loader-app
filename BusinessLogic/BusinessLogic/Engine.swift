@@ -64,7 +64,7 @@ extension Engine: EngineInterface {
     
     public func videos() -> [Video] {
         
-        Array(database.objects(Video.self))
+        Array(database.getObjects(Video.self))
     }
     
     public func download(item: Downloadable, completion: @escaping EngineDownloadResultBlock) {

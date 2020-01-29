@@ -10,7 +10,7 @@ import Networking
 
 public struct EngineFactory {
     
-    public static func createEngine(network: NetworkingService = NetworkService(), store: Storage = DatabaseManager()) -> Engine {
+    public static func createEngine(network: NetworkingService = NetworkService(), store: Storage = DatabaseManager.realm()) -> Engine {
         
         Engine(network, database: store)
     }

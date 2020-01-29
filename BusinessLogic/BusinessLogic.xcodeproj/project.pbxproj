@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		153ECE8023E2212B00922742 /* DatabaseManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 153ECE7F23E2212B00922742 /* DatabaseManagerTest.swift */; };
 		154585FD23DCEA8000A9F2A4 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 154585F323DCEA7F00A9F2A4 /* Core.framework */; };
 		1545860223DCEA8000A9F2A4 /* BusinessLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545860123DCEA8000A9F2A4 /* BusinessLogicTests.swift */; };
 		1545860423DCEA8000A9F2A4 /* BusinessLogic.h in Headers */ = {isa = PBXBuildFile; fileRef = 154585F623DCEA7F00A9F2A4 /* BusinessLogic.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -57,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		153ECE7F23E2212B00922742 /* DatabaseManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerTest.swift; sourceTree = "<group>"; };
 		154585F323DCEA7F00A9F2A4 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		154585F623DCEA7F00A9F2A4 /* BusinessLogic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BusinessLogic.h; sourceTree = "<group>"; };
 		154585F723DCEA7F00A9F2A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				155B28B823E1A2E3004C7706 /* EngineFactoryTest.swift */,
 				155B28BA23E1A3B4004C7706 /* FetchServiceTest.swift */,
 				155B28BC23E1AA96004C7706 /* EngineTest.swift */,
+				153ECE7F23E2212B00922742 /* DatabaseManagerTest.swift */,
 			);
 			path = BusinessLogicTests;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				1545860223DCEA8000A9F2A4 /* BusinessLogicTests.swift in Sources */,
 				155B28BB23E1A3B4004C7706 /* FetchServiceTest.swift in Sources */,
 				15B3535623E04504008A08ED /* VideoTest.swift in Sources */,
+				153ECE8023E2212B00922742 /* DatabaseManagerTest.swift in Sources */,
 				155B28BD23E1AA96004C7706 /* EngineTest.swift in Sources */,
 				155B28B923E1A2E3004C7706 /* EngineFactoryTest.swift in Sources */,
 				15B3535923E06AC8008A08ED /* ParserTest.swift in Sources */,
