@@ -13,6 +13,10 @@ class EngineFactoryTest: XCTestCase {
     
     func test_engineCreation() {
         
-        XCTAssertNotNil(EngineFactory.createEngine())
+        do {
+            _ = try EngineFactory.createEngine()
+        } catch {
+            XCTFail(error.localizedDescription)
+        }
     }
 }

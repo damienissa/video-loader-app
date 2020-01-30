@@ -54,7 +54,7 @@ class EngineTest: XCTestCase {
     func test_engine_weak_error() {
         
         let net = NetworkSPY()
-        var sut: EngineInterface? = EngineFactory.createEngine(network: net)
+        var sut: EngineInterface? = try? EngineFactory.createEngine(network: net)
         let url = URL(string: "http://a-url.com")!
         let exp = expectation(description: "Wait for fetching")
         
@@ -210,7 +210,7 @@ class EngineTest: XCTestCase {
         
         let net = NetworkSPY()
         let store = StorageSPY()
-        let engine = EngineFactory.createEngine(network: net, store: store)
+        let engine = try! EngineFactory.createEngine(network: net, store: store)
         trackForMemoryLeaks(net)
         trackForMemoryLeaks(store)
         trackForMemoryLeaks(engine)

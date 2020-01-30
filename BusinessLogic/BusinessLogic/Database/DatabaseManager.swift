@@ -50,11 +50,11 @@ public final class DatabaseManager {
     
     private var queue: OperationQueue?
     
-    public static func realm() -> DatabaseManager {
+    public static func realm() throws -> DatabaseManager {
         
         Realm.Configuration.defaultConfiguration = DatabaseManager.migrate()
         
-        return DatabaseManager(try! Realm())
+        return DatabaseManager(try Realm())
     }
     
     
