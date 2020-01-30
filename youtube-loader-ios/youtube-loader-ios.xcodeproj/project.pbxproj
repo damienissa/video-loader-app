@@ -25,7 +25,6 @@
 		15951D1123DD924600AEA993 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0B23DD924600AEA993 /* DetailViewController.swift */; };
 		15951D1223DD924600AEA993 /* DetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0C23DD924600AEA993 /* DetailInteractor.swift */; };
 		15951D1323DD924600AEA993 /* DetailWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D0D23DD924600AEA993 /* DetailWireframe.swift */; };
-		15951D1623DD935200AEA993 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D1523DD935200AEA993 /* SDWebImage */; };
 		15951D1823DD976F00AEA993 /* HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D1723DD976F00AEA993 /* HUD.swift */; };
 		15951D2523DDC80000AEA993 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15951D2423DDC80000AEA993 /* Core.framework */; };
 		15951D2623DDC80000AEA993 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 15951D2423DDC80000AEA993 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -39,6 +38,7 @@
 		15951D4223DDD69E00AEA993 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4123DDD69E00AEA993 /* TabBarViewController.swift */; };
 		15951D4923DEF86D00AEA993 /* ViewControllersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4823DEF86D00AEA993 /* ViewControllersFactory.swift */; };
 		15951D4F23DEFD8200AEA993 /* UIVideoElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4E23DEFD8200AEA993 /* UIVideoElement.swift */; };
+		15C65C2F23E32A110017EA64 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 15C65C2E23E32A110017EA64 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,8 +110,8 @@
 			files = (
 				1545862D23DD809800A9F2A4 /* BaseViper in Frameworks */,
 				15951D2523DDC80000AEA993 /* Core.framework in Frameworks */,
+				15C65C2F23E32A110017EA64 /* SDWebImage in Frameworks */,
 				153ECE8323E2C82B00922742 /* MBProgressHUD in Frameworks */,
-				15951D1623DD935200AEA993 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,8 +273,8 @@
 			name = "youtube-loader-ios";
 			packageProductDependencies = (
 				1545862C23DD809800A9F2A4 /* BaseViper */,
-				15951D1523DD935200AEA993 /* SDWebImage */,
 				153ECE8223E2C82B00922742 /* MBProgressHUD */,
+				15C65C2E23E32A110017EA64 /* SDWebImage */,
 			);
 			productName = "youtube-loader-ios";
 			productReference = 1545859523DCE2E300A9F2A4 /* youtube-loader-ios.app */;
@@ -328,8 +328,8 @@
 			mainGroup = 1545858C23DCE2E300A9F2A4;
 			packageReferences = (
 				1545862B23DD809800A9F2A4 /* XCRemoteSwiftPackageReference "BaseViper" */,
-				15951D1423DD935200AEA993 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				153ECE8123E2C82B00922742 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				15C65C2D23E32A110017EA64 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = 1545859623DCE2E300A9F2A4 /* Products */;
 			projectDirPath = "";
@@ -669,12 +669,12 @@
 				minimumVersion = 0.0.1;
 			};
 		};
-		15951D1423DD935200AEA993 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+		15C65C2D23E32A110017EA64 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:SDWebImage/SDWebImage.git";
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 5.5.1;
+				minimumVersion = 5.5.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -690,9 +690,9 @@
 			package = 1545862B23DD809800A9F2A4 /* XCRemoteSwiftPackageReference "BaseViper" */;
 			productName = BaseViper;
 		};
-		15951D1523DD935200AEA993 /* SDWebImage */ = {
+		15C65C2E23E32A110017EA64 /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 15951D1423DD935200AEA993 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			package = 15C65C2D23E32A110017EA64 /* XCRemoteSwiftPackageReference "SDWebImage" */;
 			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
