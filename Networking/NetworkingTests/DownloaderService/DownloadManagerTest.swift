@@ -33,7 +33,6 @@ class DownloadManagerTest: XCTestCase {
             switch result {
             case let .success(downloaded as DownloadItem):
                 XCTAssertEqual(downloaded, item)
-                XCTAssertEqual(downloaded.destinationUrl, SessionSpy.destinationURL)
             default:
                 XCTFail("Exepted success with downloaded \(item)")
             }
@@ -84,7 +83,6 @@ class DownloadManagerTest: XCTestCase {
             
             XCTAssertEqual(progress, 30)
         }) { res in
-            XCTAssertEqual(try? res.get().destinationUrl, SessionSpy.destinationURL)
             exp.fulfill()
         }
         

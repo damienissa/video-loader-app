@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import youtube_loader_ios
 
 class youtube_loader_iosTests: XCTestCase {
 

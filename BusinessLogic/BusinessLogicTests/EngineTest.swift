@@ -36,7 +36,7 @@ class EngineTest: XCTestCase {
         let url = URL(string: "http://a-url.com")!
         let exp = expectation(description: "Wait for fetching")
         sut.fetchInfo(for: url) { result in
-
+            
             switch result {
             case let .failure(error):
                 XCTAssertNotNil(error)
@@ -59,7 +59,7 @@ class EngineTest: XCTestCase {
         let exp = expectation(description: "Wait for fetching")
         
         sut?.fetchInfo(for: url) { result in
-
+            
             switch result {
             case let .failure(error):
                 XCTAssertNotNil(error)
@@ -82,7 +82,7 @@ class EngineTest: XCTestCase {
         let exp = expectation(description: "Wait for fetching")
         
         sut.fetchInfo(for: url) { result in
-
+            
             switch result {
             case let .failure(error):
                 XCTAssertNotNil(error.localizedDescription, startError.localizedDescription)
@@ -91,7 +91,7 @@ class EngineTest: XCTestCase {
             
             exp.fulfill()
         }
-    
+        
         net.finish(makeResponse(nil, nil, startError))
         
         wait(for: [exp], timeout: 1)
@@ -122,7 +122,7 @@ class EngineTest: XCTestCase {
         let exp = expectation(description: "Wait for fetching")
         let videoID = "PUSJhSVcaJ8"
         sut.fetchInfo(for: url) { result in
-
+            
             switch result {
             case let .success(video):
                 XCTAssertEqual(db.addCalledCount, 1)
@@ -144,7 +144,7 @@ class EngineTest: XCTestCase {
         let url = URL(string: "http://a-url.com")!
         let resource = Down(id: "1", url: url, destinationUrl: url, downloaded: false)
         let exp = expectation(description: "Wait for fetching")
-        sut.download(item: resource) { (result) in
+        sut.download(item: resource, progress: nil) { (result) in
             
             switch result {
             case let .failure(error):
@@ -161,33 +161,33 @@ class EngineTest: XCTestCase {
     }
     
     func test_Download_with_nserror() {
-           
-           let (sut, net, _) = makeSUT()
-           let url = URL(string: "http://a-url.com")!
-           let resource = Down(id: "1", url: url, destinationUrl: url, downloaded: false)
-           let exp = expectation(description: "Wait for fetching")
-           sut.download(item: resource) { (result) in
-               
-               switch result {
-               case let .failure(error):
-                   XCTAssertNotNil(error)
-               default:
-                   XCTFail("Excepted error, \(result) instead")
-               }
-               
-               exp.fulfill()
-           }
-           
+        
+        let (sut, net, _) = makeSUT()
+        let url = URL(string: "http://a-url.com")!
+        let resource = Down(id: "1", url: url, destinationUrl: url, downloaded: false)
+        let exp = expectation(description: "Wait for fetching")
+        sut.download(item: resource, progress: nil) { (result) in
+            
+            switch result {
+            case let .failure(error):
+                XCTAssertNotNil(error)
+            default:
+                XCTFail("Excepted error, \(result) instead")
+            }
+            
+            exp.fulfill()
+        }
+        
         net.downloaded(with: .success(resource))
-           wait(for: [exp], timeout: 1)
-       }
+        wait(for: [exp], timeout: 1)
+    }
     
     func test_Download() {
         
         let (sut, net, _) = makeSUT()
         let resource = Resource()
         let exp = expectation(description: "Wait for fetching")
-        sut.download(item: resource) { (result) in
+        sut.download(item: resource, progress: nil) { (result) in
             
             switch result {
             case let .success(res):
@@ -199,11 +199,11 @@ class EngineTest: XCTestCase {
             exp.fulfill()
         }
         
-     net.downloaded(with: .success(resource))
+        net.downloaded(with: .success(resource))
         wait(for: [exp], timeout: 1)
     }
     
-
+    
     // MARK: - Helpers
     
     func makeSUT() -> (EngineInterface, NetworkSPY, StorageSPY) {
@@ -241,7 +241,7 @@ class EngineTest: XCTestCase {
         var downloader: ((DownloadingResult) -> Void)?
         
         func execute<Processor>(_ request: URLRequest, processor: Processor, completion: @escaping (Processor.ProcessingResult) -> Void) where Processor : ResponseProcessor {
-        
+            
             executedRequest = request
             collected = completion as? (Result) -> Void
             self.processor = processor as? Parser<FetchResponse>
@@ -261,7 +261,7 @@ class EngineTest: XCTestCase {
     }
     
     class StorageSPY: Storage {
-       
+        
         var addCalledCount = 0
         var change: (() -> Void)?
         
@@ -307,7 +307,7 @@ class EngineTest: XCTestCase {
 fileprivate extension String {
     
     func value(for key: String) -> String? {
-
+        
         let arr = split(separator: "=").map(String.init)
         
         return arr.first == key ? arr.last : nil

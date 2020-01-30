@@ -13,7 +13,7 @@ class DatabaseManagerTest: XCTestCase {
     
     func test_init() {
         
-        let (sut, db) = makeSUT()
+        let (_, db) = makeSUT()
         
         XCTAssertEqual(db.objects, [])
         XCTAssertEqual(DatabaseManager.migrate().schemaVersion, 2)
