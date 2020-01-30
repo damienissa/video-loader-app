@@ -20,7 +20,7 @@ extension AlamofireSessionManager: DownloadSession {
             
             DispatchQueue.main.sync {
                 
-                return (destinationURL, [.createIntermediateDirectories])
+                return (destinationURL, [.createIntermediateDirectories, .removePreviousFile])
             }
         }
         

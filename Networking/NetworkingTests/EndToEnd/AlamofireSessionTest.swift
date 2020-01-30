@@ -19,32 +19,6 @@ class AlamofireSessionTest: XCTestCase {
     
     private static let someImageURL: URL = URL(string: "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg")!
     
-    func test_downloadFinish_withError() {
-        
-        let sut = makeSUT()
-        let exp = expectation(description: "Wait for downloading")
-        let url = AlamofireSessionTest.someImageURL
-        let dest = AlamofireSessionTest.destination(with: url.lastPathComponent)
-        
-        sut.startDownload(item: url.appendingPathComponent("error"), to: dest) { (downloading) in
-            
-            switch downloading {
-            case .progress(let progress): print(progress)
-            case .result(let result):
-                switch result {
-                case .failure(let error):
-                    XCTAssertNotNil(error)
-                default:
-                    XCTFail("Excepted error")
-                }
-                
-                exp.fulfill()
-            }
-        }
-        
-        wait(for: [exp], timeout: 10)
-    }
-    
     func test_downloadStart_withWrongDest() {
         
         let sut = makeSUT()
