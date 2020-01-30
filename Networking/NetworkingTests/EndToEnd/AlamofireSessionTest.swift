@@ -80,7 +80,7 @@ class AlamofireSessionTest: XCTestCase {
         
         let session = AlamofireSessionManager()
         
-        trackForMemoryLeaks(session, file: file, line: line)
+//        trackForMemoryLeaks(session, file: file, line: line)
         
         return session
     }
