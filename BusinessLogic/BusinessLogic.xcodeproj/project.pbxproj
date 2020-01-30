@@ -21,7 +21,6 @@
 		155B28B923E1A2E3004C7706 /* EngineFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B28B823E1A2E3004C7706 /* EngineFactoryTest.swift */; };
 		155B28BB23E1A3B4004C7706 /* FetchServiceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B28BA23E1A3B4004C7706 /* FetchServiceTest.swift */; };
 		155B28BD23E1AA96004C7706 /* EngineTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155B28BC23E1AA96004C7706 /* EngineTest.swift */; };
-		15951D2123DDC78A00AEA993 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D2023DDC78A00AEA993 /* RealmSwift */; };
 		15951D2323DDC7DF00AEA993 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2223DDC7DF00AEA993 /* DatabaseManager.swift */; };
 		15951D2923DDC8A400AEA993 /* Engine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2823DDC8A400AEA993 /* Engine.swift */; };
 		15951D2B23DDCABE00AEA993 /* VideoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D2A23DDCABE00AEA993 /* VideoFactory.swift */; };
@@ -30,6 +29,7 @@
 		15951D4C23DEF8BA00AEA993 /* EngineFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D4B23DEF8BA00AEA993 /* EngineFactory.swift */; };
 		15B3535623E04504008A08ED /* VideoTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535523E04504008A08ED /* VideoTest.swift */; };
 		15B3535923E06AC8008A08ED /* ParserTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535823E06AC8008A08ED /* ParserTest.swift */; };
+		15C65C2923E328CA0017EA64 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 15C65C2823E328CA0017EA64 /* RealmSwift */; };
 		15ECB1E423E0923200F30838 /* MemoryLeakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECB1E323E0923200F30838 /* MemoryLeakTracker.swift */; };
 /* End PBXBuildFile section */
 
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15951D2123DDC78A00AEA993 /* RealmSwift in Frameworks */,
+				15C65C2923E328CA0017EA64 /* RealmSwift in Frameworks */,
 				1545860F23DCEA9D00A9F2A4 /* Networking.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,7 +239,7 @@
 			);
 			name = Core;
 			packageProductDependencies = (
-				15951D2023DDC78A00AEA993 /* RealmSwift */,
+				15C65C2823E328CA0017EA64 /* RealmSwift */,
 			);
 			productName = BusinessLogic;
 			productReference = 154585F323DCEA7F00A9F2A4 /* Core.framework */;
@@ -292,7 +292,7 @@
 			);
 			mainGroup = 154585E923DCEA7F00A9F2A4;
 			packageReferences = (
-				15951D1F23DDC78A00AEA993 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
+				15C65C2723E328CA0017EA64 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 154585F423DCEA7F00A9F2A4 /* Products */;
 			projectDirPath = "";
@@ -608,9 +608,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		15951D1F23DDC78A00AEA993 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+		15C65C2723E328CA0017EA64 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:realm/realm-cocoa.git";
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.3.1;
@@ -619,9 +619,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		15951D2023DDC78A00AEA993 /* RealmSwift */ = {
+		15C65C2823E328CA0017EA64 /* RealmSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 15951D1F23DDC78A00AEA993 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			package = 15C65C2723E328CA0017EA64 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
 			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */

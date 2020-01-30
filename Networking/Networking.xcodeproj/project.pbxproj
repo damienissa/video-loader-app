@@ -13,7 +13,6 @@
 		154585E623DCE41A00A9F2A4 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154585E523DCE41A00A9F2A4 /* NetworkService.swift */; };
 		154585E823DCE52F00A9F2A4 /* ResponseProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154585E723DCE52F00A9F2A4 /* ResponseProcessor.swift */; };
 		1545861F23DD7EA600A9F2A4 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1545861E23DD7EA600A9F2A4 /* NetworkingService.swift */; };
-		15951D1B23DDA8E200AEA993 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15951D1A23DDA8E200AEA993 /* Alamofire */; };
 		15951D1D23DDAD5E00AEA993 /* DownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D1C23DDAD5E00AEA993 /* DownloadManager.swift */; };
 		15951D3123DDCF8900AEA993 /* Error+Unknown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D3023DDCF8900AEA993 /* Error+Unknown.swift */; };
 		15951D7323E013AD00AEA993 /* DownloaderSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15951D7223E013AD00AEA993 /* DownloaderSpy.swift */; };
@@ -24,6 +23,7 @@
 		15B3535323E02FA2008A08ED /* AlamofireSessionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B3535223E02FA2008A08ED /* AlamofireSessionTest.swift */; };
 		15C5840623E01C420059AE68 /* DownloadManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5840523E01C420059AE68 /* DownloadManagerTest.swift */; };
 		15C5840923E01D480059AE68 /* XCTestCase+DownloaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15C5840823E01D480059AE68 /* XCTestCase+DownloaderItem.swift */; };
+		15C65C2C23E329280017EA64 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 15C65C2B23E329280017EA64 /* Alamofire */; };
 		15ECB1E223E0913300F30838 /* MemoryLeakTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15ECB1E123E0913300F30838 /* MemoryLeakTracker.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15951D1B23DDA8E200AEA993 /* Alamofire in Frameworks */,
+				15C65C2C23E329280017EA64 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +215,7 @@
 			);
 			name = Networking;
 			packageProductDependencies = (
-				15951D1A23DDA8E200AEA993 /* Alamofire */,
+				15C65C2B23E329280017EA64 /* Alamofire */,
 			);
 			productName = Networking;
 			productReference = 154585CB23DCE3F200A9F2A4 /* Networking.framework */;
@@ -268,7 +268,7 @@
 			);
 			mainGroup = 154585C123DCE3F100A9F2A4;
 			packageReferences = (
-				15951D1923DDA8E200AEA993 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				15C65C2A23E329280017EA64 /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 154585CC23DCE3F200A9F2A4 /* Products */;
 			projectDirPath = "";
@@ -582,9 +582,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		15951D1923DDA8E200AEA993 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+		15C65C2A23E329280017EA64 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:Alamofire/Alamofire.git";
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 4.9.1;
@@ -593,9 +593,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		15951D1A23DDA8E200AEA993 /* Alamofire */ = {
+		15C65C2B23E329280017EA64 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 15951D1923DDA8E200AEA993 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			package = 15C65C2A23E329280017EA64 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
