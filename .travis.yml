@@ -1,4 +1,4 @@
 os: osx
 osx_image: xcode11.3
 language: swift
-script: xcodebuild clean build test -workspace youtube-loader.xcworkspace -scheme "CI" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+script: xcodebuild clean build test -workspace youtube-loader.xcworkspace -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 8,OS=13.0' -scheme "CI" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO

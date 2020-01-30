@@ -52,7 +52,7 @@ class VideoTest: XCTestCase {
         let sut = VideoFactory.resource(from: resource)
         
         
-        XCTAssertEqual(sut.destinationUrl.path, "/private/tmp")
+        XCTAssertEqual(sut.destinationUrl.lastPathComponent, "data")
     }
     
     func test_video_destination_url() {
