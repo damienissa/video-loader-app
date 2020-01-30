@@ -14,6 +14,7 @@ final class DetailInteractor {
     
     let service: DetailInput
     var output: ((UIVideoElement.Resource?, Error?) -> Void)!
+    var progress: ((Int) -> Void)?
     
     init(input: DetailInput) {
         self.service = input
@@ -26,7 +27,12 @@ extension DetailInteractor: DetailInteractorInterface {
     
     func download(_ item: UIVideoElement.Resource) {
         
-        service.download(item) { [weak self] res, error in
+        service.download(item, progress: { [weak self]
+            progress in
+            
+            self?.progress?(progress)
+            
+        }) { [weak self] res, error in
             self?.output(res, error)
         }
     }

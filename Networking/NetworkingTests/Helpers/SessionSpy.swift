@@ -10,19 +10,20 @@ import Networking
 
 class SessionSpy: DownloadSession {
     
-    static let destenationURL = URL(string: "http://a-url.com")!
+    static let destinationURL = URL(string: "http://a-url.com")!
     
     var error: NSError?
+    var completion: ((DownloadSessionResult) -> Void)?
     
-    func startDownload(item: URL, to destenationURL: URL, completion: @escaping (DownloadSessionResult) -> Void) {
+    func startDownload(item: URL, to destinationURL: URL, completion: @escaping (DownloadSessionResult) -> Void) {
         
         downloadingItems.append(item)
+        self.completion = completion
+    }
+    
+    func finished(with result: DownloadSessionResult) {
         
-        if let error = error {
-            completion(.result(.failure(error)))
-        } else {
-            completion(.result(.success(SessionSpy.destenationURL)))
-        }
+        completion?(result)
     }
     
     var downloadingItems: [URL] = []

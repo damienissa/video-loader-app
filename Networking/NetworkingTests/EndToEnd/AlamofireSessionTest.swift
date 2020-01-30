@@ -14,7 +14,7 @@ class AlamofireSessionTest: XCTestCase {
     override class func setUp() {
         super.setUp()
         
-        removeFile(at: destenation(with: someImageURL.lastPathComponent))
+        removeFile(at: destination(with: someImageURL.lastPathComponent))
     }
     
     private static let someImageURL: URL = URL(string: "https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg")!
@@ -24,7 +24,7 @@ class AlamofireSessionTest: XCTestCase {
         let sut = makeSUT()
         let exp = expectation(description: "Wait for downloading")
         let url = AlamofireSessionTest.someImageURL
-        let dest = AlamofireSessionTest.destenation(with: url.lastPathComponent)
+        let dest = AlamofireSessionTest.destination(with: url.lastPathComponent)
         
         sut.startDownload(item: url.appendingPathComponent("error"), to: dest) { (downloading) in
             
@@ -78,16 +78,16 @@ class AlamofireSessionTest: XCTestCase {
         let sut = makeSUT()
         let exp = expectation(description: "Wait for downloading")
         let url = AlamofireSessionTest.someImageURL
-        let destenationURL = AlamofireSessionTest.destenation(with: url.lastPathComponent)
+        let destinationURL = AlamofireSessionTest.destination(with: url.lastPathComponent)
         
-        sut.startDownload(item: url, to: destenationURL) { (downloading) in
+        sut.startDownload(item: url, to: destinationURL) { (downloading) in
             
             switch downloading {
             case .progress(let progress): print(progress)
             case .result(let result):
                 switch result {
                 case .success(let dest):
-                    XCTAssertEqual(destenationURL, dest)
+                    XCTAssertEqual(destinationURL, dest)
                 case let .failure(error):
                     XCTFail("Excepted success \(error)")
                 }
@@ -111,7 +111,7 @@ class AlamofireSessionTest: XCTestCase {
         return session
     }
     
-    static func destenation(with name: String) -> URL {
+    static func destination(with name: String) -> URL {
 
         getDocumentsDirectory().appendingPathComponent(name)
     }

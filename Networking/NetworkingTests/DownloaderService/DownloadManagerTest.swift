@@ -17,7 +17,7 @@ class DownloadManagerTest: XCTestCase {
         let sut = makeSUT(spy)
         let item = makeDownloadItem()
         
-        sut.download(item: item, to: SessionSpy.destenationURL) { _ in }
+        sut.download(item: item, to: SessionSpy.destinationURL) { _ in }
         
         XCTAssertEqual(spy.downloadingItems, [item.url])
     }
@@ -28,18 +28,19 @@ class DownloadManagerTest: XCTestCase {
         let sut = makeSUT(spy)
         let item = makeDownloadItem()
         let exp = expectation(description: "Wait for completion")
-        sut.download(item: item, to: SessionSpy.destenationURL) { result in
+        sut.download(item: item, to: SessionSpy.destinationURL) { result in
             
             switch result {
             case let .success(downloaded as DownloadItem):
                 XCTAssertEqual(downloaded, item)
-                XCTAssertEqual(downloaded.destinationUrl, SessionSpy.destenationURL)
+                XCTAssertEqual(downloaded.destinationUrl, SessionSpy.destinationURL)
             default:
                 XCTFail("Exepted success with downloaded \(item)")
             }
             
             exp.fulfill()
         }
+        spy.finished(with: .result(.success(SessionSpy.destinationURL)))
         
         wait(for: [exp], timeout: 1)
     }
@@ -53,11 +54,11 @@ class DownloadManagerTest: XCTestCase {
         let startError = NSError(domain: "Some Error", code: 1)
         spy.error = startError
         
-        sut.download(item: item, to: SessionSpy.destenationURL) { result in
+        sut.download(item: item, to: SessionSpy.destinationURL) { result in
             
             switch result {
             case let .failure(error):
-                XCTAssertNotNil(error)
+                XCTAssertEqual(error.localizedDescription, startError.localizedDescription)
             default:
                 XCTFail("Exepted failure with \(startError)")
             }
@@ -65,33 +66,32 @@ class DownloadManagerTest: XCTestCase {
             exp.fulfill()
         }
         
+        spy.finished(with: .result(.failure(startError)))
+        
         wait(for: [exp], timeout: 1)
     }
     
     func testProgress() {
         
         let item = makeDownloadItem()
-        let sut = makeSUT(SessionSpy())
+        let spy = SessionSpy()
+        let sut = makeSUT(spy)
         let exp = expectation(description: "Wait for completion")
-        var result: DownloadingResult?
         
-        sut.download(item: item, to: SessionSpy.destenationURL, progress: {
+        
+        sut.download(item: item, to: SessionSpy.destinationURL, progress: {
             progress in
             
-            XCTAssertEqual(progress, 100)
+            XCTAssertEqual(progress, 30)
         }) { res in
-            result = res
+            XCTAssertEqual(try? res.get().destinationUrl, SessionSpy.destinationURL)
             exp.fulfill()
         }
         
-        wait(for: [exp], timeout: 1)
+        spy.finished(with: .progress(30))
+        spy.finished(with: .result(.success(SessionSpy.destinationURL)))
         
-        switch result {
-        case let .success(responsed as DownloadItem):
-            XCTAssertEqual(responsed, item)
-        default:
-            XCTFail("Except success with \(item)")
-        }
+        wait(for: [exp], timeout: 1)
     }
     
     

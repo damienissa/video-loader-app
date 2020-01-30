@@ -32,13 +32,14 @@ public typealias EngineFetchResult = Result<Video, Error>
 public typealias EngineFetchResultBlock = (EngineFetchResult) -> Void
 public typealias EngineDownloadResult = Result<Resource, Error>
 public typealias EngineDownloadResultBlock = (Result<Resource, Error>) -> Void
+public typealias EngineDownloadProgressBlock = (Int) -> Void
 
 public protocol EngineInterface {
     
     func fetchInfo(for url: URL, completion: @escaping EngineFetchResultBlock)
     func videos() -> [Video]
-    func download(item: Downloadable, completion: @escaping EngineDownloadResultBlock)
-    func set(destenation: String, for resource: Downloadable)
+    func download(item: Downloadable, progress: EngineDownloadProgressBlock?, completion: @escaping EngineDownloadResultBlock)
+    func set(destination: String, for resource: Downloadable)
 }
 
 extension Engine: EngineInterface {
@@ -67,9 +68,9 @@ extension Engine: EngineInterface {
         Array(database.getObjects(Video.self))
     }
     
-    public func download(item: Downloadable, completion: @escaping EngineDownloadResultBlock) {
+    public func download(item: Downloadable, progress: EngineDownloadProgressBlock?, completion: @escaping EngineDownloadResultBlock) {
         
-        network.download(item: item, to: item.destinationUrl, with: nil) { result in
+        network.download(item: item, to: item.destinationUrl, with: progress) { result in
             
             switch result {
             case .success(let item as Resource):
@@ -82,11 +83,11 @@ extension Engine: EngineInterface {
         }
     }
     
-    public func set(destenation: String, for resource: Downloadable) {
+    public func set(destination: String, for resource: Downloadable) {
         
         database.change {
             
-            resource.destinationUrl = URL(fileURLWithPath: destenation)
+            resource.destinationUrl = URL(fileURLWithPath: destination)
         }
     }
 }

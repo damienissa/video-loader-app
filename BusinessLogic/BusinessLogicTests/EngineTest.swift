@@ -109,7 +109,7 @@ class EngineTest: XCTestCase {
         let url = URL(string: "http://a-url.com")!
         let dest = URL(fileURLWithPath: "")
         let resource = Down(id: "1", url: url, destinationUrl: url, downloaded: false)
-        sut.set(destenation: dest.path, for: resource)
+        sut.set(destination: dest.path, for: resource)
         db.callChange()
         
         XCTAssertEqual(resource.destinationUrl.path, dest.path)
@@ -247,7 +247,7 @@ class EngineTest: XCTestCase {
             self.processor = processor as? Parser<FetchResponse>
         }
         
-        func download(item: Downloadable, to destenationURL: URL, with progress: DownloadProgress?, completion: @escaping (DownloadingResult) -> Void) {
+        func download(item: Downloadable, to destinationURL: URL, with progress: DownloadProgress?, completion: @escaping (DownloadingResult) -> Void) {
             downloader = completion
         }
         

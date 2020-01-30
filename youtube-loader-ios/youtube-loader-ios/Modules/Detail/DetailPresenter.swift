@@ -33,9 +33,13 @@ final class DetailPresenter {
         self.wireframe = wireframe
         
         interactor.output = { [weak self] (item, error) in
-            if let item = item, let dest = self?.destinationURL(item) {
+            if let dest = item?.destinationURL {
                 self?.process(local: dest)
             }
+        }
+        
+        interactor.progress = { [weak self] progress in
+            self?.view.fill(Float(progress) / 100)
         }
     }
 }
@@ -64,9 +68,9 @@ extension DetailPresenter: DetailPresenterInterface {
         let resource = video.resources[row]
         currentExt = resource.extension
         
-        if let destenation = destinationURL(resource) {
+        if let destination = destinationURL(resource) {
             
-            interactor.set(dest: destenation.path, for: resource)
+            interactor.set(dest: destination.path, for: resource)
             interactor.download(resource)
         }
     }
@@ -82,13 +86,10 @@ extension DetailPresenter: DetailPresenterInterface {
         return destinationURL
     }
     
-    func process(local url: URL?) {
-        
-        guard let url = url else {
-            return
-        }
+    func process(local url: URL) {
         
         DispatchQueue.main.async { [weak self] in
+            self?.view.finish()
             let activityViewController = UIActivityViewController(activityItems: [url, "Check this out!"], applicationActivities: nil)
             self?.wireframe.viewController.present(activityViewController, animated: true)
         }

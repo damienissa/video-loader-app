@@ -10,6 +10,7 @@
 
 import UIKit
 import SDWebImage
+import MBProgressHUD
 
 final class DetailViewController: UIViewController {
     
@@ -20,6 +21,7 @@ final class DetailViewController: UIViewController {
     // MARK: - Public properties -
 
     var presenter: DetailPresenterInterface!
+    var hud: MBProgressHUD?
 
     // MARK: - Lifecycle -
 
@@ -40,6 +42,20 @@ final class DetailViewController: UIViewController {
 
 extension DetailViewController: DetailViewInterface {
 
+    func fill(_ progress: Float) {
+        
+        if hud == nil {
+            hud = MBProgressHUD.showAdded(to: view, animated: true)
+            hud?.mode = .annularDeterminate
+        }
+        hud?.progress = progress
+    }
+    
+    func finish() {
+        
+        hud?.hide(animated: true)
+        hud = nil
+    }
 }
 
 

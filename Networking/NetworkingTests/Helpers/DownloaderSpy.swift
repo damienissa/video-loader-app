@@ -14,7 +14,7 @@ class DownloaderSpy: Downloader {
     
     var responsedItems: [Downloadable] = []
     
-    func download(item: Downloadable, to destenationURL: URL, progress: DownloadProgress? = nil, downloadingResult: @escaping (DownloadingResult) -> Void) {
+    func download(item: Downloadable, to destinationURL: URL, progress: DownloadProgress? = nil, downloadingResult: @escaping (DownloadingResult) -> Void) {
         
         responsedItems.append(item)
         

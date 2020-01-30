@@ -11,6 +11,7 @@
 import UIKit
 import BaseViper
 import Core
+import Networking
 
 final class DetailWireframe: BaseWireframe {
 
@@ -40,31 +41,36 @@ extension DetailWireframe: DetailWireframeInterface {
 
 // MARK: - Adapter
 
+typealias Progress = (Int) -> Void
 protocol DetailInput {
     
-    func download(_ item: UIVideoElement.Resource, completion: ((UIVideoElement.Resource?, Error?) -> Void)!)
+    func download(_ item: UIVideoElement.Resource, progress: Progress?, completion: ((UIVideoElement.Resource?, Error?) -> Void)!)
     func set(dest: String, for resource: UIVideoElement.Resource)
 }
 
 extension Engine: DetailInput {
     
-    func download(_ item: UIVideoElement.Resource, completion: ((UIVideoElement.Resource?, Error?) -> Void)!) {
+    func download(_ item: UIVideoElement.Resource, progress: Progress?, completion: ((UIVideoElement.Resource?, Error?) -> Void)!) {
         
-        guard let object = DatabaseManager.shared.objectsForKey(Resource.self, key: "id", value: item.id).first else {
+        guard let object = DatabaseManager.realm().objects(String(describing: Resource.self)).filter("id == %@", item.id).first as? Resource else {
             return completion(nil, nil)
         }
         
-        download(item: object) { (res, err) in
-            completion(item, err)
+        download(item: object, progress: progress) { result in
+            
+            switch result {
+            case let .success(resource):
+                completion(UIVideoElement.Resource(resource: resource), nil)
+            case let .failure(error):
+                completion(nil, error)
+            }
         }
     }
     
     func set(dest: String, for resource: UIVideoElement.Resource) {
         
-        guard let object = DatabaseManager.shared.objectsForKey(Resource.self, key: "id", value: resource.id).first else {
-            return
+        if let resource = resource.resource {
+            set(destination: dest, for: resource)
         }
-        
-        set(destenation: dest, for: object)
     }
 }

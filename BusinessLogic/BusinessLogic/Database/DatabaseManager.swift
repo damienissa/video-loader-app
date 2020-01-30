@@ -25,7 +25,7 @@ extension Video: StorageObject { }
 extension Resource: StorageObject { }
 
 extension DatabaseManager: Storage {
-   
+    
     public func add(_ object: StorageObject) {
         
         if let db = object as? Object {
@@ -48,7 +48,7 @@ extension DatabaseManager: Storage {
 
 public final class DatabaseManager {
     
-    private let thread = DispatchQueue(label: "DatabaseManager.Realm")
+    private var queue: OperationQueue?
     
     public static func realm() -> DatabaseManager {
         
@@ -62,8 +62,9 @@ public final class DatabaseManager {
     
     var store: RealmLike
     
-    public init(_ store: RealmLike) {
+    public init(_ store: RealmLike, queue: OperationQueue? = OperationQueue.current) {
         self.store = store
+        self.queue = queue
     }
     
     
@@ -76,7 +77,7 @@ public final class DatabaseManager {
     }
     
     public func change(_ changesBlock: @escaping () -> Void) {
-    
+        
         self.write { _ in
             changesBlock()
         }
@@ -97,7 +98,7 @@ public final class DatabaseManager {
     
     fileprivate func write(_ changes: @escaping (RealmLike) -> Void) {
         
-        thread.async {
+        queue?.addOperation {
             autoreleasepool {
                 
                 try? self.store.write(withoutNotifying: []) {

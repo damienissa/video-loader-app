@@ -16,7 +16,7 @@ public enum DownloadSessionResult {
 
 public protocol DownloadSession {
     
-    func startDownload(item: URL, to destenationURL: URL, completion: @escaping (DownloadSessionResult) -> Void)
+    func startDownload(item: URL, to destinationURL: URL, completion: @escaping (DownloadSessionResult) -> Void)
 }
 
 public class DownloadManager: Downloader {
@@ -28,17 +28,16 @@ public class DownloadManager: Downloader {
         self.session = session
     }
     
-    public func download(item: Downloadable, to destenationURL: URL, progress: DownloadProgress? = nil, downloadingResult: @escaping (DownloadingResult) -> Void) {
+    public func download(item: Downloadable, to destinationURL: URL, progress: DownloadProgress? = nil, downloadingResult: @escaping (DownloadingResult) -> Void) {
         
-        session.startDownload(item: item.url, to: destenationURL) { sessionResult in
+        session.startDownload(item: item.url, to: destinationURL) { sessionResult in
             
             switch sessionResult {
             case let .result(result):
                 switch result {
                 case .failure(let error):
                     downloadingResult(.failure(error))
-                case .success(let url):
-                    item.destinationUrl = url
+                case .success:
                     downloadingResult(.success(item))
                 }
             

@@ -42,7 +42,7 @@ class FetchServiceTest: XCTestCase {
             executedRequest = request
         }
         
-        func download(item: Downloadable, to destenationURL: URL, with progress: DownloadProgress?, completion: @escaping (DownloadingResult) -> Void) {
+        func download(item: Downloadable, to destinationURL: URL, with progress: DownloadProgress?, completion: @escaping (DownloadingResult) -> Void) {
             
         }
     }

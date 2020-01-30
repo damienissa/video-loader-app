@@ -18,5 +18,5 @@ public protocol Downloadable: class {
 
 public protocol Downloader {
     
-    func download(item: Downloadable, to destenationURL: URL, progress: DownloadProgress?, downloadingResult: @escaping (DownloadingResult) -> Void)
+    func download(item: Downloadable, to destinationURL: URL, progress: DownloadProgress?, downloadingResult: @escaping (DownloadingResult) -> Void)
 }

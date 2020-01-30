@@ -16,6 +16,8 @@ protocol DetailWireframeInterface: BaseWireframe {
 
 protocol DetailViewInterface: ViewInterface {
     
+    func fill(_: Float)
+    func finish()
 }
 
 protocol DetailPresenterInterface: PresenterInterface {
@@ -26,12 +28,13 @@ protocol DetailPresenterInterface: PresenterInterface {
     func title(for row: Int) -> String
     func download(at row: Int)
     
-    func process(local url: URL?)
+    func process(local url: URL)
 }
 
 protocol DetailInteractorInterface: InteractorInterface {
     
     var output: ((UIVideoElement.Resource?, Error?) -> Void)! { get set }
+    var progress: ((Int) -> Void)? { get set }
     func download(_ item: UIVideoElement.Resource)
     func set(dest: String, for resource: UIVideoElement.Resource)
 }

@@ -62,7 +62,7 @@ class VideoTest: XCTestCase {
                                           filesizePretty: "2 Mb",
                                           streamExtension: "mp4")
         let sut = VideoFactory.resource(from: resource)
-        let url = destenation(with: UUID().uuidString)
+        let url = destination(with: UUID().uuidString)
         let exp = expectation(description: "Wait for setting")
         sut.destinationUrl = url
         XCTAssertEqual(sut.destinationUrl, url)
@@ -90,7 +90,7 @@ class VideoTest: XCTestCase {
         var resources: [ResourceProvider] = []
     }
     
-    func destenation(with name: String) -> URL {
+    func destination(with name: String) -> URL {
 
         getDocumentsDirectory().appendingPathComponent(name)
     }

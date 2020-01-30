@@ -14,13 +14,13 @@ public class AlamofireSessionManager: SessionManager {
 
 extension AlamofireSessionManager: DownloadSession {
     
-    public func startDownload(item: URL, to destenationURL: URL, completion: @escaping (DownloadSessionResult) -> Void)  {
+    public func startDownload(item: URL, to destinationURL: URL, completion: @escaping (DownloadSessionResult) -> Void)  {
         
         let request = download(item) { _, _ -> ( destinationURL: URL, options: DownloadRequest.DownloadOptions ) in
             
             DispatchQueue.main.sync {
                 
-                return (destenationURL, [.createIntermediateDirectories])
+                return (destinationURL, [.createIntermediateDirectories])
             }
         }
         
@@ -36,7 +36,7 @@ extension AlamofireSessionManager: DownloadSession {
                 return completion(.result(.failure(error)))
             }
             
-            completion(.result(.success(destenationURL)))
+            completion(.result(.success(destinationURL)))
         }
     }
 }

@@ -16,7 +16,7 @@ public protocol NetworkingService {
                                                processor: Processor,
                                                completion: @escaping (Processor.ProcessingResult) -> Void)
     func download(item: Downloadable,
-                  to destenationURL: URL,
+                  to destinationURL: URL,
                   with progress: DownloadProgress?,
                   completion: @escaping (DownloadingResult) -> Void)
 }

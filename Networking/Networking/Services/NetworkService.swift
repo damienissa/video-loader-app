@@ -32,11 +32,11 @@ public final class NetworkService: NetworkingService {
     }
     
     public func download(item: Downloadable,
-                         to destenationURL: URL,
+                         to destinationURL: URL,
                          with progress: DownloadProgress? = nil,
                          completion: @escaping (DownloadingResult) -> Void) {
         
-        manager.download(item: item, to: destenationURL, progress: progress, downloadingResult: completion)
+        manager.download(item: item, to: destinationURL, progress: progress, downloadingResult: completion)
     }
 }
 

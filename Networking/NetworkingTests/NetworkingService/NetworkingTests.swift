@@ -29,7 +29,7 @@ class NetworkingTests: XCTestCase {
         
         let item = makeDownloadItem()
         let loader = DownloaderSpy()
-        makeSUT(loader).download(item: item, to: SessionSpy.destenationURL) { _ in }
+        makeSUT(loader).download(item: item, to: SessionSpy.destinationURL) { _ in }
         
         XCTAssertEqual(loader.responsedItems as? [DownloadItem], [item])
     }
@@ -42,7 +42,7 @@ class NetworkingTests: XCTestCase {
         let exp = expectation(description: "Wait for completion")
         var result: DownloadingResult?
         
-        sut.download(item: item, to: SessionSpy.destenationURL, with: {
+        sut.download(item: item, to: SessionSpy.destinationURL, with: {
             progress in
             
             XCTAssertEqual(progress, 100)
@@ -69,7 +69,7 @@ class NetworkingTests: XCTestCase {
         let exp = expectation(description: "Wait for completion")
         var result: DownloadingResult?
         
-        sut.download(item: item, to: SessionSpy.destenationURL) { res in
+        sut.download(item: item, to: SessionSpy.destinationURL) { res in
             result = res
             exp.fulfill()
         }
@@ -95,7 +95,7 @@ class NetworkingTests: XCTestCase {
         
         var result: DownloadingResult?
         
-        sut.download(item: item, to: SessionSpy.destenationURL) { res in
+        sut.download(item: item, to: SessionSpy.destinationURL) { res in
             result = res
             exp.fulfill()
         }

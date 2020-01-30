@@ -18,6 +18,22 @@ public struct UIVideoElement {
         public let `extension`: String
         public let url: String
         public let localID: String
+        
+        init(resource: Core.Resource) {
+            
+            id = resource.id
+            title = resource.format + " " + resource.filesize
+            `extension` = resource.resourceExtension
+            url = resource.urlStr
+            localID = resource.localID
+        }
+        
+        var resource: Core.Resource? {
+            DatabaseManager.realm().objects(String(describing: Resource.self)).filter("id == %@", id).first as? Core.Resource
+        }
+        var destinationURL: URL? {
+            resource?.destinationUrl
+        }
     }
     
     public let id: String
@@ -31,10 +47,7 @@ public struct UIVideoElement {
         thumbnail = video.thumbnail
         title = video.name
         resources = video.resources.compactMap { (resource: Core.Resource) in
-            Resource(id: resource.id,
-                     title: resource.format + " " + resource.filesize,
-                     extension: resource.resourceExtension,
-                     url: resource.urlStr, localID: resource.localID)
+            Resource(resource: resource)
         }
     }
 }
