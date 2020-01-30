@@ -54,7 +54,7 @@ class EngineTest: XCTestCase {
     func test_engine_weak_error() {
         
         let net = NetworkSPY()
-        var sut: EngineInterface? = try? EngineFactory.createEngine(network: net)
+        var sut: EngineInterface? = try? EngineFactory.createEngine(network: net, store: DatabaseManager.realm(inMemory: true))
         let url = URL(string: "http://a-url.com")!
         let exp = expectation(description: "Wait for fetching")
         

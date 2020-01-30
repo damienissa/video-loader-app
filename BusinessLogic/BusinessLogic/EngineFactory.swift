@@ -10,12 +10,8 @@ import Networking
 
 public struct EngineFactory {
     
-    public static func createEngine(network: NetworkingService = NetworkService(), store: Storage? = nil) throws -> Engine {
+    public static func createEngine(network: NetworkingService = NetworkService(), store: Storage) -> Engine {
         
-        if let stor = store {
-            return Engine(network, database: stor)
-        } else {
-            return Engine(network, database: try DatabaseManager.realm())
-        }
+        Engine(network, database: store)
     }
 }

@@ -14,7 +14,7 @@ class EngineFactoryTest: XCTestCase {
     func test_engineCreation() {
         
         do {
-            _ = try EngineFactory.createEngine()
+            _ = try EngineFactory.createEngine(store: DatabaseManager.realm(inMemory: true))
         } catch {
             XCTFail(error.localizedDescription)
         }

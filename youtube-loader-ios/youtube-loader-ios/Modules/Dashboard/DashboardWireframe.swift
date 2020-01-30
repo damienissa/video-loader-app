@@ -24,11 +24,10 @@ final class DashboardWireframe: BaseWireframe {
         let moduleViewController = storyboard.instantiateViewController(ofType: DashboardViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = DashboardInteractor(EngineFactory.createEngine())
+        let interactor = DashboardInteractor(EngineFactory.createEngine(store: try! DatabaseManager.realm(inMemory: false)))
         let presenter = DashboardPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }
-
 }
 
 // MARK: - Extensions -

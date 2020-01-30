@@ -26,7 +26,7 @@ final class DetailWireframe: BaseWireframe {
         let moduleViewController = storyboard.instantiateViewController(ofType: DetailViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = DetailInteractor(input: EngineFactory.createEngine())
+        let interactor = DetailInteractor(input: EngineFactory.createEngine(store: try! DatabaseManager.realm(inMemory: false)))
         let presenter = DetailPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         presenter.video = video
         moduleViewController.presenter = presenter
@@ -52,7 +52,7 @@ extension Engine: DetailInput {
     
     func download(_ item: UIVideoElement.Resource, progress: Progress?, completion: ((UIVideoElement.Resource?, Error?) -> Void)!) {
         
-        guard let object = DatabaseManager.realm().objects(String(describing: Resource.self)).filter("id == %@", item.id).first as? Resource else {
+        guard let object = try? DatabaseManager.realm(inMemory: false).objects(String(describing: Resource.self)).filter("id == %@", item.id).first as? Resource else {
             return completion(nil, nil)
         }
         

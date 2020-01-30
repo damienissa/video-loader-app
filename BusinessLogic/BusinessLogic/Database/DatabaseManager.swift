@@ -50,9 +50,9 @@ public final class DatabaseManager {
     
     private var queue: OperationQueue?
     
-    public static func realm() throws -> DatabaseManager {
+    public static func realm(inMemory: Bool) throws -> DatabaseManager {
         
-        Realm.Configuration.defaultConfiguration = DatabaseManager.migrate()
+        Realm.Configuration.defaultConfiguration = DatabaseManager.migrate(inMemory: inMemory)
         
         return DatabaseManager(try Realm())
     }
@@ -118,8 +118,12 @@ public final class DatabaseManager {
 
 extension DatabaseManager {
     
-    public static func migrate() -> Realm.Configuration {
+    public static func migrate(inMemory: Bool = false) -> Realm.Configuration {
         
-        Realm.Configuration(schemaVersion: 2)
+        if inMemory {
+            return Realm.Configuration(inMemoryIdentifier: "DatabaseManager.inMemory", schemaVersion: 2)
+        } else {
+            return Realm.Configuration(schemaVersion: 2)
+        }
     }
 }

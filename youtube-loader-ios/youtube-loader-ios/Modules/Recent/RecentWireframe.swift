@@ -24,7 +24,7 @@ final class RecentWireframe: BaseWireframe {
         let moduleViewController = storyboard.instantiateViewController(ofType: RecentViewController.self)
         super.init(viewController: moduleViewController)
 
-        let interactor = RecentInteractor(provider: EngineFactory.createEngine())
+        let interactor = RecentInteractor(provider: EngineFactory.createEngine(store: try! DatabaseManager.realm(inMemory: false)))
         let presenter = RecentPresenter(view: moduleViewController, interactor: interactor, wireframe: self)
         moduleViewController.presenter = presenter
     }

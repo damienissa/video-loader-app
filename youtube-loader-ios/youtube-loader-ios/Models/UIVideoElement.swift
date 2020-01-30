@@ -29,7 +29,7 @@ public struct UIVideoElement {
         }
         
         var resource: Core.Resource? {
-            DatabaseManager.realm().objects(String(describing: Resource.self)).filter("id == %@", id).first as? Core.Resource
+            try! DatabaseManager.realm(inMemory: false).objects(String(describing: Resource.self)).filter("id == %@", id).first as? Core.Resource
         }
         var destinationURL: URL? {
             resource?.destinationUrl

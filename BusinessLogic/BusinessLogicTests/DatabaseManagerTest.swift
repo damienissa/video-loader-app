@@ -21,7 +21,7 @@ class DatabaseManagerTest: XCTestCase {
     
     func test_objectsArray() {
         
-        let sut = try? DatabaseManager.realm()
+        let sut = try? DatabaseManager.realm(inMemory: true)
         XCTAssertEqual(sut?.getObjects(Resource.self), [])
     }
     
